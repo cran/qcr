@@ -1,3 +1,15 @@
+#-----------------------------------------------------------------------------#
+#                                                                             #
+#                  QUALITY CONTROL STATISTICS IN R                            #
+#                                                                             #
+#  An R package for statistical in-line quality control.                      #
+#                                                                             #
+#  Written by: Miguel A. Flores Sanchez                                       #
+#              Professor of the Mathematics Department                        #
+#              Escuela Politecnica Nacional, Ecuador                          #
+#              miguel.flores@epn.edu.ec                                       #
+#                                                                             #
+#-----------------------------------------------------------------------------#
 #-------------------------------------------------------------------------
 # plot.qcs
 #-------------------------------------------------------------------------
@@ -16,12 +28,11 @@
 ##' @param center.nominal a value specifying the 
 ##' center of group statistics or the "target" value 
 ##' of the process
-##' @param limits.specification a two-values vector 
+##' @param limits.specification a two-value vector 
 ##' specifying control limits.
-##' @param limits.alert a two-values vector 
+##' @param limits.alert a two-value vector 
 ##' specifying control alert limits.
-##' @param label.index logical. If TRUE label index is plotted
-##' @param type.data  a string specifying el type de data.
+##' @param type.data  a string specifying the type of data.
 ##' @param conf.nsigma  a numeric value used to compute control limits, specifying the
 ##' number of standard deviations (if \code{conf.nsigma} > 1) or the confidence level (if 0
 ##' < \code{conf.nsigma} < 1).
@@ -31,8 +42,9 @@
 ##' @param ...  arguments to be passed to or from methods.
 ##' @export
 ##' 
+
 plot.qcs <- function(x, title, subtitle, xlab, ylab, ylim, center.nominal = NULL, 
-                     limits.specification = NULL, limits.alert = NULL, label.index = NULL, 
+                     limits.specification = NULL, limits.alert = NULL,  
                      type.data  =  c("continuous", "atributte", "dependence"), ...)
 #.........................................................................                     
 {
@@ -77,10 +89,10 @@ plot.qcs <- function(x, title, subtitle, xlab, ylab, ylim, center.nominal = NULL
 
   if (inherits(x, "qcs.cusum")){
   axis(4, at = c(0, max(x$limits), min(x$limits)), 
-       labels = c("CL","LCL","UCL"), adj = 0, las = 1)
+       labels = c("CL","UCL","LCL"), adj = 0, las = 1)
   } else{
     axis(4, at = c(x$center, max(x$limits), min(x$limits)), 
-         labels = c("CL","LCL","UCL"), adj = 0, las = 1)
+         labels = c("CL","UCL","LCL"), adj = 0, las = 1)
     
   }
     
@@ -128,12 +140,6 @@ if (type.data == "dependence"){
   
   
   
-  m<-length(x$statistics)
-  if (!is.null(label.index) & (m>1)){
-    etiqueta <- x$statistics[[label.index+1]]
-    text(label  =  etiqueta, x  =  sample, y  =  x$statistics[[1]],
-         pos  =  4, cex = 0.7)
-  }
   
   
   if (type.data != "dependence") {
@@ -186,15 +192,12 @@ if (type.data == "dependence"){
 ##' 
 plot.qcs.xbar <- function(x, title  =  NULL, subtitle  =  NULL, xlab  =  NULL,
                           ylab  =  NULL, ylim  =  NULL, conf.nsigma.alert  =  NULL,
-                          center.nominal  =  NULL, limits.specification  =  NULL,
-                          label.index  =  NULL, ...)
+                          center.nominal  =  NULL, limits.specification  =  NULL, ...)
 #.........................................................................                     
   {
   
   m<-length(x$statistics)
   
-  if (!is.null(label.index))
-    if (m-1 < label.index) stop("the covariable index is out of range")
   
   if(!is.null(conf.nsigma.alert)){
     limits.alert <- limits.xbar(x$center, x$std.dev, x$sizes,
@@ -210,7 +213,7 @@ plot.qcs.xbar <- function(x, title  =  NULL, subtitle  =  NULL, xlab  =  NULL,
   if (is.null(ylab)) ylab <- expression(bar(x))
   
   plot.qcs(x, title , subtitle, xlab, ylab, ylim, center.nominal,
-           limits.specification, limits.alert, label.index)
+           limits.specification, limits.alert)
 } #plot.qcs.xbar
 #.........................................................................                     
 
@@ -224,14 +227,12 @@ plot.qcs.xbar <- function(x, title  =  NULL, subtitle  =  NULL, xlab  =  NULL,
 plot.qcs.S <- function(x, title  =  NULL, subtitle  =  NULL, xlab  =  NULL,
                        ylab  =  NULL, ylim  =  NULL, conf.nsigma.alert  =  NULL,
                        center.nominal  =  NULL, limits.specification  =  NULL,
-                       label.index  =  NULL, ...)
+                        ...)
 #.........................................................................                       
   {
   
   m<-length(x$statistics)
   
-  if (!is.null(label.index))
-    if (m-1 < label.index) stop("the covariable index is out of range")
   
   if(!is.null(conf.nsigma.alert)){
     limits.alert <- limits.S(x$center, x$std.dev, x$sizes,
@@ -247,7 +248,7 @@ plot.qcs.S <- function(x, title  =  NULL, subtitle  =  NULL, xlab  =  NULL,
   if (is.null(ylab)) ylab <- "S"
   
   plot.qcs(x, title , subtitle, xlab, ylab, ylim, center.nominal,
-           limits.specification, limits.alert, label.index)
+           limits.specification, limits.alert)
 } #plot.qcs.S
 #.........................................................................                     
 
@@ -263,14 +264,12 @@ plot.qcs.S <- function(x, title  =  NULL, subtitle  =  NULL, xlab  =  NULL,
 plot.qcs.R <- function(x, title  =  NULL, subtitle  =  NULL, xlab  =  NULL,
                        ylab  =  NULL, ylim  =  NULL, conf.nsigma.alert  =  NULL,
                        center.nominal  =  NULL, limits.specification  =  NULL,
-                       label.index  =  NULL, ...)
+                        ...)
 #.........................................................................                     
   {
   
   m<-length(x$statistics)
   
-  if (!is.null(label.index))
-    if (m-1 < label.index) stop("the covariable index is out of range")
   
   if(!is.null(conf.nsigma.alert)){
     limits.alert <- limits.R(x$center, x$std.dev, x$sizes,
@@ -286,7 +285,7 @@ plot.qcs.R <- function(x, title  =  NULL, subtitle  =  NULL, xlab  =  NULL,
   if (is.null(ylab)) ylab <- "R"
   
   plot.qcs(x, title , subtitle, xlab, ylab, ylim, center.nominal,
-           limits.specification, limits.alert, label.index)
+           limits.specification, limits.alert)
 } #plot.qcs.R
 #.........................................................................                     
 
@@ -300,14 +299,12 @@ plot.qcs.R <- function(x, title  =  NULL, subtitle  =  NULL, xlab  =  NULL,
 plot.qcs.one <- function(x, title  =  NULL, subtitle  =  NULL, xlab  =  NULL, 
                          ylab  =  NULL, ylim  =  NULL, conf.nsigma.alert  =  NULL, 
                          center.nominal  =  NULL, limits.specification  =  NULL, 
-                         label.index  =  NULL, ...)
+                          ...)
 #.........................................................................                     
   {
   
   m<-length(x$statistics)
   
-  if (!is.null(label.index))
-    if (m-1 < label.index) stop("the covariable index is out of range")
   
   if(!is.null(conf.nsigma.alert)){
     limits.alert <- limits.xbar.one(x$center, x$std.dev, x$sizes, 
@@ -323,7 +320,7 @@ plot.qcs.one <- function(x, title  =  NULL, subtitle  =  NULL, xlab  =  NULL,
   if (is.null(ylab)) ylab <- "Xbar.one"
   
   plot.qcs(x, title , subtitle, xlab, ylab, ylim, center.nominal, 
-           limits.specification, limits.alert, label.index)
+           limits.specification, limits.alert)
 } #plot.qcs.one
 #.........................................................................                     
 
@@ -337,14 +334,12 @@ plot.qcs.one <- function(x, title  =  NULL, subtitle  =  NULL, xlab  =  NULL,
 plot.qcs.p <- function(x, title  =  NULL, subtitle  =  NULL, xlab  =  NULL,
                        ylab  =  NULL, ylim  =  NULL, conf.nsigma.alert  =  NULL,
                        center.nominal  =  NULL, limits.specification  =  NULL,
-                       label.index  =  NULL, ...)
+                        ...)
 #.........................................................................                     
   {
   
   m<-length(x$statistics)
   
-  if (!is.null(label.index))
-    if (m-1 < label.index) stop("the covariable index is out of range")
   
   if(!is.null(conf.nsigma.alert)){
     limits.alert <- limits.xbar(x$center, x$std.dev, x$sizes,
@@ -360,7 +355,7 @@ plot.qcs.p <- function(x, title  =  NULL, subtitle  =  NULL, xlab  =  NULL,
   if (is.null(ylab)) ylab <- "p"
   
   plot.qcs(x, title , subtitle, xlab, ylab, ylim, center.nominal,
-           limits.specification, limits.alert, label.index)
+           limits.specification, limits.alert)
 } #plot.qcs.p
 #.........................................................................                     
 
@@ -375,14 +370,12 @@ plot.qcs.p <- function(x, title  =  NULL, subtitle  =  NULL, xlab  =  NULL,
 plot.qcs.np <- function(x, title  =  NULL, subtitle  =  NULL, xlab  =  NULL,
                         ylab  =  NULL, ylim  =  NULL, conf.nsigma.alert  =  NULL,
                         center.nominal  =  NULL, limits.specification  =  NULL,
-                        label.index  =  NULL, ...)
+                        ...)
 #.........................................................................                     
   {
   
   m<-length(x$statistics)
   
-  if (!is.null(label.index))
-    if (m-1 < label.index) stop("the covariable index is out of range")
   
   if(!is.null(conf.nsigma.alert)){
     limits.alert <- limits.xbar(x$center, x$std.dev, x$sizes,
@@ -398,7 +391,7 @@ plot.qcs.np <- function(x, title  =  NULL, subtitle  =  NULL, xlab  =  NULL,
   if (is.null(ylab)) ylab <- "np"
   
   plot.qcs(x, title , subtitle, xlab, ylab, ylim, center.nominal,
-           limits.specification, limits.alert, label.index)
+           limits.specification, limits.alert)
 } #plot.qcs.np
 #.........................................................................                     
 
@@ -412,14 +405,12 @@ plot.qcs.np <- function(x, title  =  NULL, subtitle  =  NULL, xlab  =  NULL,
 plot.qcs.c <- function(x, title  =  NULL, subtitle  =  NULL, xlab  =  NULL,
                        ylab  =  NULL, ylim  =  NULL, conf.nsigma.alert  =  NULL,
                        center.nominal  =  NULL, limits.specification  =  NULL,
-                       label.index  =  NULL, ...)
+                       ...)
 #.........................................................................                     
   {
   
   m<-length(x$statistics)
   
-  if (!is.null(label.index))
-    if (m-1 < label.index) stop("the covariable index is out of range")
   
   if(!is.null(conf.nsigma.alert)){
     limits.alert <- limits.xbar(x$center, x$std.dev, x$sizes,
@@ -435,7 +426,7 @@ plot.qcs.c <- function(x, title  =  NULL, subtitle  =  NULL, xlab  =  NULL,
   if (is.null(ylab)) ylab <- "c"
   
   plot.qcs(x, title , subtitle, xlab, ylab, ylim, center.nominal,
-           limits.specification, limits.alert, label.index)
+           limits.specification, limits.alert)
 } #plot.qcs.c
 #.........................................................................                     
 
@@ -449,14 +440,12 @@ plot.qcs.c <- function(x, title  =  NULL, subtitle  =  NULL, xlab  =  NULL,
 plot.qcs.u <- function(x, title  =  NULL, subtitle  =  NULL, xlab  =  NULL,
                        ylab  =  NULL, ylim  =  NULL, conf.nsigma.alert  =  NULL,
                        center.nominal  =  NULL, limits.specification  =  NULL,
-                       label.index  =  NULL, ...)
+                       ...)
 #.........................................................................                     
   {
   
   m<-length(x$statistics)
   
-  if (!is.null(label.index))
-    if (m-1 < label.index) stop("the covariable index is out of range")
   
   if(!is.null(conf.nsigma.alert)){
     limits.alert <- limits.xbar(x$center, x$std.dev, x$sizes,
@@ -472,7 +461,7 @@ plot.qcs.u <- function(x, title  =  NULL, subtitle  =  NULL, xlab  =  NULL,
   if (is.null(ylab)) ylab <- "u"
   
   plot.qcs(x, title , subtitle, xlab, ylab, ylim, center.nominal,
-           limits.specification, limits.alert, label.index)
+           limits.specification, limits.alert)
 } #plot.qcs.u
 #.........................................................................                     
 
@@ -485,7 +474,7 @@ plot.qcs.u <- function(x, title  =  NULL, subtitle  =  NULL, xlab  =  NULL,
 ##' 
 plot.qcs.ewma <- function(x, title  =  NULL, subtitle  =  NULL, xlab  =  NULL,
                           ylab  =  NULL, ylim  =  NULL, 
-                          label.index  =  NULL, ...)
+                          ...)
 #.........................................................................                     
   {
   
@@ -498,8 +487,6 @@ plot.qcs.ewma <- function(x, title  =  NULL, subtitle  =  NULL, xlab  =  NULL,
     ylim <-  range(x$statistics, x$limits)
   
   
-  if (!is.null(label.index))
-    if (m-1 < label.index) stop("the covariable index is out of range")
   
   if (is.null(title)) title <- x$data.name
   
@@ -507,7 +494,7 @@ plot.qcs.ewma <- function(x, title  =  NULL, subtitle  =  NULL, xlab  =  NULL,
   if (is.null(xlab)) xlab <- "Sample"
   if (is.null(ylab)) ylab <- "ewma"
   
-  plot.qcs(x, title , subtitle, xlab, ylab, ylim, label.index, type.data = "dependence")
+  plot.qcs(x, title , subtitle, xlab, ylab, ylim, type.data = "dependence")
 } #plot.qcs.ewma
 #.........................................................................                     
 
@@ -521,7 +508,7 @@ plot.qcs.ewma <- function(x, title  =  NULL, subtitle  =  NULL, xlab  =  NULL,
 ##' 
 plot.qcs.cusum <- function(x, title  =  NULL, subtitle  =  NULL, xlab  =  NULL,
                           ylab  =  NULL, ylim  =  NULL, 
-                          label.index  =  NULL, ...)
+                          ...)
   #.........................................................................                     
 {
   
@@ -529,18 +516,14 @@ plot.qcs.cusum <- function(x, title  =  NULL, subtitle  =  NULL, xlab  =  NULL,
   
   if(is.null(ylim)) 
     ylim <-  range(x$pos, x$neg, x$limits)
-  
-  
-  if (!is.null(label.index))
-    if (m-1 < label.index) stop("the covariable index is out of range")
-  
+    
   if (is.null(title)) title <- x$data.name
   
   if (is.null(subtitle)) subtitle <- expression(paste("Chart of control cusum"," "))
   if (is.null(xlab)) xlab <- "Sample"
   if (is.null(ylab)) ylab <- "Cusum"
   
-  plot.qcs(x, title , subtitle, xlab, ylab, ylim, label.index, type.data = "dependence")
+  plot.qcs(x, title , subtitle, xlab, ylab, ylim, type.data = "dependence")
 } #plot.qcs.cusum
 #.........................................................................                     
 

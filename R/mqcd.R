@@ -1,27 +1,27 @@
 #-----------------------------------------------------------------------------#
 #                                                                             #
-#            QUALITY CONTROL AND RELIABILITY IN R                             #
+#                  QUALITY CONTROL STATISTICS IN R                            #
 #                                                                             #
 #  An R package for statistical in-line quality control.                      #
 #                                                                             #
-#  Written by: Miguel A. Flores Sánchez                                       #
-#              Student Master of Statistical Techniques                       #
-#              University of The Coruña, SPAIN                                #
-#              mflores@outlook.com                                            #
+#  Written by: Miguel A. Flores Sanchez                                       #
+#              Professor of the Mathematics Department                        #
+#              Escuela Politecnica Nacional, Ecuador                          #
+#              miguel.flores@epn.edu.ec                                       #
 #                                                                             #
 #-----------------------------------------------------------------------------#
 #-----------------------------------------------------------------------------#
 # Main function to create a 'mqcd' object
 #-----------------------------------------------------------------------------#
-##' Multivariante Quality Control Data
+##' It creates a data object to be used in Multivariante Quality Control
 ##' 
 ##' Create an object of class 'mqcd' to perform statistical quality control.
-##' This object be used to plot Multivariate Control Charts.
+##' This object is used to plot Multivariate Control Charts.
 ##' 
 ##' @aliases mqcd 
 ##' @param data a matrix or data-frame or array where it should contain data.
 ##' @param data.name  a string that specifies the title displayed on the plots. 
-##' If not provided is taken from the name of the object data.
+##' If not provided it is taken from the name of the object's data.
 ##' @export
 ##' @examples
 ##' library(qcr)
@@ -29,7 +29,6 @@
 ##' str(dowel1)
 ##' data.mqcd <- mqcd(dowel1)
 ##' str(data.mqcd)
-
 
 mqcd <- function(data, data.name = NULL)
   #.........................................................................
@@ -56,7 +55,6 @@ mqcd <- function(data, data.name = NULL)
   attr(result, "type.data") <- "Multivariate"
   
   oldClass(result) <- c("mqcd", "array")
-  
   
   return(result)
 } # mqcd

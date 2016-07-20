@@ -1,13 +1,13 @@
 #-----------------------------------------------------------------------------#
 #                                                                             #
-#                     QUALITY CONTROL DATA IN R                               #
+#                  QUALITY CONTROL STATISTICS IN R                            #
 #                                                                             #
 #  An R package for statistical in-line quality control.                      #
 #                                                                             #
-#  Written by: Miguel A. Flores Sánchez                                       #
-#              Student Master of Statistical Techniques                       #
-#              University of The Coruña, SPAIN                                #
-#              mflores@outlook.com                                            #
+#  Written by: Miguel A. Flores Sanchez                                       #
+#              Professor of the Mathematics Department                        #
+#              Escuela Politecnica Nacional, Ecuador                          #
+#              miguel.flores@epn.edu.ec                                       #
 #                                                                             #
 #-----------------------------------------------------------------------------#
 
@@ -25,33 +25,25 @@
 ##' 
 ##' 
 ##' @aliases qcd 
-##' @param data a matrix or data-frame where it should contain data, index sample and,
+##' @param data a matrix or data-frame which should contain data, index sample and,
 ##' optionally, covariate(s).
-##' @param var.index a scalar with the column number corresponding the observed data for
+##' @param var.index a scalar with the column number corresponding to the observed data for
 ##' the variable (the variable quality).  Alternativelly can be a string with the
 ##' name of the quality variable.
-##' @param sample.index a scalar with the column number corresponding the index each
+##' @param sample.index a scalar with the column number corresponding to the index each
 ##' group (sample).
 ##' @param covar.index  optional. A scalar or numeric vector with the column number(s)
-##' corresponding to the covariate(s). Alternativelly can be a character vector with
+##' corresponding to the covariate(s). Alternativelly it can be a character vector with
 ##' the names of the covariates.
 ##' @param covar.names  optional. A string or vector of strings with names for the
 ##' covariate columns.  Only valid if there is more than one column of data. By
 ##' default, takes the names from the original object.
 ##' @param data.name  a string specifying the name of the variable which appears on the
-##' plots. If not provided is taken from the object given as data.
-##' @param type.data  a string specifying el type de data.
+##' plots. If not provided it is taken from the object given as data.
+##' @param type.data  a string specifying the type of data.
 ##' @param sizes  optional. A value or a vector of values specifying the sample sizes
-##' associated with each group. For continuous data the sample sizes are obtained counting the non-\code{NA} elements of
-##' the sample.index vector. For attribute
-##' variable the argument sizes is required.
+##' associated with each group. For continuous data the sample sizes are obtained counting the non-\code{NA} elements##' of the sample.index vector. For attribute variable the argument sizes is required.
 ##' @export
-
-# data <- orangejuice[trial,]
-# sizes <- sizes[trial]
-# type.data <- "atributte"
-# var.index=2
-# sample.index=1
 
 qcd <- function(data, var.index  =  1, sample.index  =  2,
                 covar.index = NULL, covar.names = NULL,
@@ -102,57 +94,4 @@ qcd <- function(data, var.index  =  1, sample.index  =  2,
   
   return(result)
 } # qcd
-#.........................................................................
-
-
-#-------------------------------------------------------------------------
-# state.control
-#-------------------------------------------------------------------------
-##' This function is used for the state of the process is under control. 
-##' Were removed from the sample observations that violate the rules of a process under control
-##' @aliases state.control
-##' @param x  Object qcs (Quality Control Statitical)
-##' @export
-##' @examples
-##' 
-##' ##
-##' ##  Continuous data 
-##' ##
-##'library(qcr)
-##'data(pistonrings)
-##'str(pistonrings)
-##'pistonrings.qcd<-qcd(pistonrings)
-##'
-##'class(pistonrings.qcd)
-##'
-##'res.qcs <- qcs.xbar(pistonrings.qcd)
-##'plot(res.qcs,title="Control Chart Xbar for pistonrings I")
-##'summary(res.qcs)  
-##'
-##'res.qcd <- state.control(res.qcs)
-##'res.qcs <- qcs.xbar(res.qcd)
-##'plot(res.qcs,title="Control Chart Xbar for pistonrings II")
-##'summary(res.qcs)  
-##'
-##'res.qcd <- state.control(res.qcs)
-##'res.qcs <- qcs.xbar(res.qcd)
-##'plot(res.qcs,title="Control Chart Xbar for pistonrings III")
-##'summary(res.qcs)  
-##'
-state.control <- function(x) 
-  #.........................................................................  
-{
-  if (length(x$violations[[1]])>0 || length(x$violations[[2]]>0)){
-    ii<-which(is.na(match(x$qcd$sample,unlist(x$violations))))  
-    result<-x$qcd[ii,]  
-    result<-droplevels(result)
-  } else {
-    cat("The process is under control")
-  }
-  
-  oldClass(result) <- c("qcd", "data.frame")
-  
-  invisible(result)
-  
-} #sate.control
 #.........................................................................

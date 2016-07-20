@@ -1,23 +1,23 @@
 #-----------------------------------------------------------------------------#
 #                                                                             #
-#                     QUALITY CONTROL STATISTICS IN R                         #
+#                  QUALITY CONTROL STATISTICS IN R                            #
 #                                                                             #
 #  An R package for statistical in-line quality control.                      #
 #                                                                             #
-#  Written by: Miguel A. Flores Sánchez                                       #
-#              Student Master of Statistical Techniques                       #
-#              University of The Coruña, SPAIN                                #
-#              mflores@outlook.com                                            #
+#  Written by: Miguel A. Flores Sanchez                                       #
+#              Professor of the Mathematics Department                        #
+#              Escuela Politecnica Nacional, Ecuador                          #
+#              miguel.flores@epn.edu.ec                                       #
 #                                                                             #
 #-----------------------------------------------------------------------------#
 #-------------------------------------------------------------------------
 # cusum chart
 #-------------------------------------------------------------------------
-##' Function to plot cusum chart
+##' Function to plot the cusum chart
 ##'
 ##' This function is used to compute statistics required by the cusum chart.
 ##'
-##' @param x   an R object (used to select the method). See details.
+##' @param x   Object qcd (Quality Control Data)
 ##' @param ... arguments passed to or from methods.
 ##' @export
 ##' @examples
@@ -49,7 +49,7 @@ qcs.cusum <- function(x, ...) {
 ##' control.
 ##' @param se.shift The amount of shift to detect in the process, measured in
 ##' standard errors of the summary statistics.
-##' @param plot a logical value indicating should be plotted.
+##' @param plot a logical value indicating it should be plotted.
 ##' @export
 ##' 
 qcs.cusum.default <- function(x, var.index  =  1, sample.index  =  2,

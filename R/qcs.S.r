@@ -1,13 +1,13 @@
 #-----------------------------------------------------------------------------#
 #                                                                             #
-#                     QUALITY CONTROL STATISTICS IN R                         #
+#                  QUALITY CONTROL STATISTICS IN R                            #
 #                                                                             #
 #  An R package for statistical in-line quality control.                      #
 #                                                                             #
-#  Written by: Miguel A. Flores Sánchez                                       #
-#              Student Master of Statistical Techniques                       #
-#              University of The Coruña, SPAIN                                #
-#              mflores@outlook.com                                            #
+#  Written by: Miguel A. Flores Sanchez                                       #
+#              Professor of Mathematic Department                             #
+#              Escuela Politecnica Nacional, Ecuador                          #
+#              miguel.flores@epn.edu.ec                                       #
 #                                                                             #
 #-----------------------------------------------------------------------------#
 

@@ -1,13 +1,13 @@
 #-----------------------------------------------------------------------------#
 #                                                                             #
-#                     QUALITY CONTROL STATISTICS IN R                         #
+#                  QUALITY CONTROL STATISTICS IN R                            #
 #                                                                             #
 #  An R package for statistical in-line quality control.                      #
 #                                                                             #
-#  Written by: Miguel A. Flores Sánchez                                       #
-#              Student Master of Statistical Techniques                       #
-#              University of The Coruña, SPAIN                                #
-#              mflores@outlook.com                                            #
+#  Written by: Miguel A. Flores Sanchez                                       #
+#              Professor of the Mathematics Department                        #
+#              Escuela Politecnica Nacional, Ecuador                          #
+#              miguel.flores@epn.edu.ec                                       #
 #                                                                             #
 #-----------------------------------------------------------------------------#
 #-------------------------------------------------------------------------
@@ -17,15 +17,22 @@
 ##'
 ##' This function is used to compute statistics required by the ewma chart.
 ##'
-##' @param x   an R object (used to select the method). See details.
+##' @param x   Object qcd (Quality Control Data)
 ##' @param ... arguments passed to or from methods.
 ##' @export
+##' library(qcr)
+##' data(pistonrings)
+##' attach(pistonrings)
+##' res.qcd <- qcd(pistonrings, type.data = "dependence")
+##' res.qcs <- qcs.ewma(res.qcd, type = "ewma")
+##' summary(res.qcs)
+##' plot(res.qcs)
 
 qcs.ewma <- function(x, ...) {
   UseMethod("qcs.ewma")
 }
 
-##' Function to plot ewma chart
+##' Function to plot the ewma chart
 ##'
 ##' This function is used to compute statistics required by the ewma chart.
 ##'
@@ -41,7 +48,7 @@ qcs.ewma <- function(x, ...) {
 ##' number of standard deviations.
 ##' @param lambda the smoothing parameter \eqn{0 \le \lambda \le 1}{0 <= lambda
 ##' <= 1}
-##' @param plot a logical value indicating should be plotted.
+##' @param plot a logical value indicating it should be plotted.
 ##' @export
 qcs.ewma.default <- function(x, var.index  =  1, sample.index  =  2,
                           covar.index  =  NULL, covar.names  =  NULL,

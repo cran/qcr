@@ -1,24 +1,27 @@
 #-----------------------------------------------------------------------------#
 #                                                                             #
-#                     QUALITY CONTROL STATISTICS IN R                         #
+#                  QUALITY CONTROL STATISTICS IN R                            #
 #                                                                             #
 #  An R package for statistical in-line quality control.                      #
 #                                                                             #
-#  Written by: Miguel A. Flores Sánchez                                       #
-#              Student Master of Statistical Techniques                       #
-#              University of The Coruña, SPAIN                                #
-#              mflores@outlook.com                                            #
+#  Written by: Miguel A. Flores Sanchez                                       #
+#              Professor of the Mathematics Department                             #
+#              Escuela Politecnica Nacional, Ecuador                          #
+#              miguel.flores@epn.edu.ec                                       #
 #                                                                             #
 #-----------------------------------------------------------------------------#
   
   #-------------------------------------------------------------------------
   # one chart
   #-------------------------------------------------------------------------
-  ##' Function to plot Shewhart xbar.one chart
+  ##' Function to plot the Shewhart xbar.one chart
   ##' 
   ##' This function is used to compute statistics required by the xbar.one chart.
+  # @details
+  # In the default method \code{qcs.one.default} parameter \code{x} is a matrix 
+  # or data-frame which should contain data, index sample and, optionally, covariate(s).  
   ##'   
-  ##' @param x   an R object (used to select the method). See details.
+  ##' @param x   Object qcd (Quality Control Data)
   ##' @param ... arguments passed to or from methods.
   ##' @export
   ##' @examples
@@ -61,11 +64,8 @@
   ##' @param conf.nsigma  a numeric value used to compute control limits, specifying the
   ##' number of standard deviations (if \code{conf.nsigma} > 1) or the confidence level (if 0
   ##' < \code{conf.nsigma} < 1).
-  ##' @param limits a two-values vector specifying control limits.
+  ##' @param limits a two-value vector specifying control limits.
   ##' @param plot a logical value indicating should be plotted.
-  ##' @details
-  ##' In the default method \code{qcs.one.default} parameter \code{x} is a matrix 
-  ##' or data-frame where it should contain data, index sample and, optionally, covariate(s).  
   ##' @export
 qcs.one.default <- function(x, var.index  =  1, sample.index  =  2, 
                                    covar.index  =  NULL, covar.names  =  NULL,

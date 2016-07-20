@@ -1,13 +1,13 @@
 #-----------------------------------------------------------------------------#
 #                                                                             #
-#                     QUALITY CONTROL STATISTICS IN R                         #
+#                  QUALITY CONTROL STATISTICS IN R                            #
 #                                                                             #
 #  An R package for statistical in-line quality control.                      #
 #                                                                             #
-#  Written by: Miguel A. Flores Sánchez                                       #
-#              Student Master of Statistical Techniques                       #
-#              University of The Coruña, SPAIN                                #
-#              mflores@outlook.com                                            #
+#  Written by: Miguel A. Flores Sanchez                                       #
+#              Professor of the Mathematics Department                        #
+#              Escuela Politecnica Nacional, Ecuador                          #
+#              miguel.flores@epn.edu.ec                                       #
 #                                                                             #
 #-----------------------------------------------------------------------------#
 #
@@ -23,8 +23,8 @@
 ##' @aliases qcs summary.qcs print.qcs
 ##' 
 ##' @param x  a vector containing observed data
-##' @param sample.index a scalar with the column number corresponding the index each
-##' group (sample).
+##' @param sample.index a scalar with the column number corresponding to the index 
+##' of each group (sample).
 ##' @param sizes a value or a vector of values specifying the sample sizes
 ##' associated with each group. For continuous data the sample sizes are obtained counting the non-\code{NA} elements of
 ##' the sample.index vector. For \code{"p"}, \code{"np"} and \code{"u"} charts the argument
@@ -49,7 +49,7 @@
 ##' @param conf.nsigma  a numeric value used to compute control limits, specifying the
 ##' number of standard deviations (if \code{conf.nsigma} > 1) or the confidence level (if 0
 ##' < \code{conf.nsigma} < 1).
-##' @param limits a two-values vector specifying control limits.
+##' @param limits a two-value vector specifying control limits.
 ##' @param type.data  a string specifying el type de data.
 ##' @param lambda the smoothing parameter \eqn{0 \le \lambda \le 1}{0 <= lambda
 ##' <= 1}
@@ -374,14 +374,17 @@ qcs.dependence<-function(x, sample.index = NULL, sizes = NULL, type = c("ewma","
                      pos = pos, neg = neg, decision.interval = decision.interval, 
                      se.shift = se.shift)
   }
+  oldClass(result) <- c("qcs")
   return( result)
 
   #.........................................................................
 } # qcs.dependence
 ##' @export
+##' @method print qcs
 print.qcs <- function(x, ...) str(x,1)
 #.........................................................................
 ##' @export
+##' @method summary qcs
 summary.qcs <- function(object, ...)
 #.........................................................................
 {
@@ -455,8 +458,8 @@ qcs.add <- function(x, ...){
 ##' @rdname  qcs.add 
 ##' @method qcs.add default
 ##' @param value   Object type data.frame
-##' @param var.index a scalar with the column number corresponding the observed data for
-##' the variable (the variable quality).  Alternativelly can be a string with the
+##' @param var.index a scalar with the column number corresponding to the observed data for
+##' the variable (the variable quality).  Alternativelly it can be a string with the
 ##' name of the quality variable.
 ##' @param sample.index a scalar with the column number corresponding the index each
 ##' group (sample).
@@ -522,3 +525,62 @@ qcs.add.default <- function(x, value, var.index = NULL,
                   NULL)
   result <- z.qcs
 }
+
+
+#-------------------------------------------------------------------------
+# state.control
+#-------------------------------------------------------------------------
+##' Univariante process state
+##' 
+##' This function removes observations from the sample which violates 
+##' the rules of a process under control
+##' @aliases state.control
+##' @param x  Object qcs (Quality Control Statistical)
+##' @export
+##' @examples
+##' 
+##' ##
+##' ##  Continuous data 
+##' ##
+##'library(qcr)
+##'data(pistonrings)
+##'str(pistonrings)
+##'pistonrings.qcd<-qcd(pistonrings)
+##'
+##'class(pistonrings.qcd)
+##'
+##'res.qcs <- qcs.xbar(pistonrings.qcd)
+##'plot(res.qcs,title="Control Chart Xbar for pistonrings I")
+##'summary(res.qcs)  
+##'
+##'res.qcd <- state.control(res.qcs)
+##'res.qcs <- qcs.xbar(res.qcd)
+##'plot(res.qcs,title="Control Chart Xbar for pistonrings II")
+##'summary(res.qcs)  
+##'
+##'res.qcd <- state.control(res.qcs)
+##'res.qcs <- qcs.xbar(res.qcd)
+##'plot(res.qcs,title="Control Chart Xbar for pistonrings III")
+##'summary(res.qcs)  
+##'
+state.control <- function(x) 
+  #.........................................................................  
+{
+  
+  if (!inherits(x, "qcs"))
+    stop("an object of class 'qcs' is required")
+  
+  if (length(x$violations[[1]])>0 || length(x$violations[[2]]>0)){
+    ii<-which(is.na(match(x$qcd$sample,unlist(x$violations))))  
+    result<-x$qcd[ii,]  
+    result<-droplevels(result)
+  } else {
+    cat("The process is under control")
+  }
+  
+  oldClass(result) <- c("qcd", "data.frame")
+  
+  invisible(result)
+  
+} #sate.control
+#.........................................................................

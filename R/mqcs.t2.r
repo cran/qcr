@@ -1,13 +1,13 @@
 #-----------------------------------------------------------------------------#
 #                                                                             #
-#                     QUALITY CONTROL STATISTICS IN R                         #
+#                  QUALITY CONTROL STATISTICS IN R                            #
 #                                                                             #
 #  An R package for statistical in-line quality control.                      #
 #                                                                             #
-#  Written by: Miguel A. Flores S?nchez                                       #
-#              Student Master of Statistical Techniques                       #
-#              University of The Coru?a, SPAIN                                #
-#              mflores@outlook.com                                            #
+#  Written by: Miguel A. Flores Sanchez                                       #
+#              Professor of the Mathematics Department                        #
+#              Escuela Politecnica Nacional, Ecuador                          #
+#              miguel.flores@epn.edu.ec                                       #
 #                                                                             #
 #-----------------------------------------------------------------------------#
 #-------------------------------------------------------------------------
@@ -48,20 +48,21 @@ mqcs.t2 <- function(x, ...) {
 ##' @rdname mqcs.t2
 ##' @method mqcs.t2 default
 ##' @inheritParams mqcd
+##' @param limits a two-values vector specifying the control limits.
 ##' @param Xmv is the mean vector. It is only specified for Phase II or when the parameters of the distribution are known.
 ##' @param S is the sample covariance matrix. It is only used for Phase II or when the parameters of the distribution are known.
 ##' @param colm is the number of samples (m) and it is only used in Hotelling control chart for Phase II
 ##' @param alpha it is the the significance level (0.01 for default)
 ##' @param phase Allows to select the type of UCL to use. Only values of phase = 1 or 2 are allowed.
-##' @param method Is the method employed to compute the covatiance matrix
-##' in individual observation case. Two methods are used "sw" 
+##' @param method is the method employed to compute the covatiance matrix
+##' in the individual observation case. Two methods are used "sw" 
 ##' for compute according to (Sullivan,Woodall 1996a) and "hm" 
 ##' by (Holmes,Mergen 1993)
-##' @param plot a logical value indicating should be plotted. 
+##' @param plot a logical value indicating that it should be plotted. 
 ##' @author Edgar Santos-Fernandez
 ##' @export
 ##' 
-mqcs.t2.default <- function(x, data.name = NULL, Xmv = NULL, S = NULL,
+mqcs.t2.default <- function(x, data.name = NULL, limits = NULL, Xmv = NULL, S = NULL,
                             colm = NULL, alpha = 0.01,
                             phase = 1, method = "sw", plot = FALSE, ...)
 #.........................................................................
@@ -69,7 +70,7 @@ mqcs.t2.default <- function(x, data.name = NULL, Xmv = NULL, S = NULL,
   
   obj<-mqcd(data= x, data.name = data.name)
 
-  result<-mqcs.t2.mqcd(x = obj, data.name = data.name, Xmv = Xmv, 
+  result<-mqcs.t2.mqcd(x = obj, data.name = data.name, limits = NULL, Xmv = Xmv, 
                        S = S, colm = colm, alpha = alpha,
                        phase = phase, method = method, plot = plot, ...)
 
@@ -83,7 +84,10 @@ mqcs.t2.default <- function(x, data.name = NULL, Xmv = NULL, S = NULL,
 ##' @export
 ##' 
 
-mqcs.t2.mqcd <- function(x, Xmv = NULL, S = NULL, colm = NULL, 
+#x <- mqcd(datos2)
+#alpha <- 0.00135
+
+mqcs.t2.mqcd <- function(x, limits = NULL, Xmv = NULL, S = NULL, colm = NULL, 
                          alpha = 0.01,
                          phase = 1, method = "sw", plot = FALSE, ...) 
 #.........................................................................  
@@ -92,7 +96,7 @@ mqcs.t2.mqcd <- function(x, Xmv = NULL, S = NULL, colm = NULL,
   if(is.null(x) || !inherits(x, "mqcd"))
     stop("data must be an objects of class (or extending) 'mqcd'")
   
-  if(!missing(Xmv))(phase <- 2)
+#  if(!missing(Xmv))(phase <- 2)
   
   mqcs<-mqcs(x, method)
   if(is.null(Xmv)) Xmv <- mqcs$mean 
@@ -111,20 +115,22 @@ mqcs.t2.mqcd <- function(x, Xmv = NULL, S = NULL, colm = NULL,
     statistics[ii,1] <- n * t(x.jk[ii,] - Xmv) %*% solve(S) %*% (x.jk[ii,] - Xmv)
   }
  
+  
+if (is.null(limits)){
+
   ifelse(n == 1, ifelse(phase == 1, 
                         ucl <- ((colm - 1) ^ 2) / colm * qbeta(1 - alpha,p / 2,(((2 * (colm - 1) ^ 2) / (3 * colm - 4) - p - 1) / 2)),
                         ucl<-((p * (colm + 1) * (colm - 1)) / ((colm ^ 2) - colm * p)) * qf(1 - alpha,p,colm - p)),
          ifelse(phase == 1, 
                 ucl <- (p * (colm - 1) * (n - 1)) / (colm * n - colm - p + 1) * qf(1 - alpha,p,colm * n - colm - p + 1),
                 ucl <- (p * (colm + 1) * (n - 1)) / (colm * n - colm - p + 1) * qf(1 - alpha,p,colm * n - colm - p + 1))
-  )
+  )  
   
-  limits <- c(lcl = 0, ucl = ucl)
+limits <- c(lcl = 0, ucl = ucl)
+
+}
   
-  violations <- which(statistics > ucl)
-    
-    
-  
+  violations <- which(statistics > limits[2])
 
   data.name <- attr(x, "data.name")
   result <- list(mqcd  =  x, type  =  "t2", statistics  =  statistics,

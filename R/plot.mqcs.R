@@ -1,3 +1,15 @@
+#-----------------------------------------------------------------------------#
+#                                                                             #
+#                  QUALITY CONTROL STATISTICS IN R                            #
+#                                                                             #
+#  An R package for statistical in-line quality control.                      #
+#                                                                             #
+#  Written by: Miguel A. Flores Sanchez                                       #
+#              Professor of Mathematic Department                             #
+#              Escuela Politecnica Nacional, Ecuador                          #
+#              miguel.flores@epn.edu.ec                                       #
+#                                                                             #
+#-----------------------------------------------------------------------------#
 #-------------------------------------------------------------------------
 # plot.mqcs
 #-------------------------------------------------------------------------
@@ -31,8 +43,8 @@ plot.mqcs <- function(x, title, subtitle, xlab, ylab, ylim, ...)
   axis(1, at  =  sample, cex.axis  =  0.7)
   axis(2, cex.axis  =  0.7)
   
-  axis(4, at = c(max(x$limits), min(x$limits)), 
-       labels = c("UCL","LCL"), adj = 0, las = 1)
+  axis(4, at = c(max(x$limits)), 
+       labels = c("UCL"), adj = 0, las = 1)
     
   
   rect(par("usr")[1],
@@ -51,7 +63,7 @@ plot.mqcs <- function(x, title, subtitle, xlab, ylab, ylim, ...)
     lcl <- x$limits[1]
     ucl <- x$limits[2]
     
-    abline(h  =  lcl, lwd  =  2, col  =  "red", lty = 2)
+    #abline(h  =  lcl, lwd  =  2, col  =  "red", lty = 2)
     abline(h  =  ucl, lwd  =  2, col  =  "red",lty = 2) 
       
   

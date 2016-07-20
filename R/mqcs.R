@@ -1,20 +1,22 @@
 #-----------------------------------------------------------------------------#
 #                                                                             #
-#            QUALITY CONTROL AND RELIABILITY IN R                             #
+#                  QUALITY CONTROL STATISTICS IN R                            #
 #                                                                             #
 #  An R package for statistical in-line quality control.                      #
 #                                                                             #
-#  Written by: Miguel A. Flores Sánchez                                       #
-#              Student Master of Statistical Techniques                       #
-#              University of The Coruña, SPAIN                                #
-#              mflores@outlook.com                                            #
+#  Written by: Miguel A. Flores Sanchez                                       #
+#              Professor of the Mathematics Department                        #
+#              Escuela Politecnica Nacional, Ecuador                          #
+#              miguel.flores@epn.edu.ec                                       #
 #                                                                             #
 #-----------------------------------------------------------------------------#
 #-----------------------------------------------------------------------------#
 # Main function to create a 'mqcs' object
 #-----------------------------------------------------------------------------#
+##'  It computes statistics to be used in Multivariante Quality Control
+##' 
 ##' Create an object of class 'mqcs' to perform statistical quality control.
-##' This function is used to compute statistics required for to plot Multivariate Control Charts
+##' This function is used to compute statistics required to plot Multivariate Control Charts
 ##' 
 ##' @aliases mqcs summary.mqcs print.mqcs
 ##' 
@@ -29,6 +31,9 @@
 mqcs <- function(x, method = "sw", ...)
   #.........................................................................  
   {
+
+  if (!inherits(x, "mqcd"))
+    stop("object must be mqcd")
   
   p <- ncol(x) # quality characteristics
   m <- nrow(x) # number of samples or observations
@@ -49,9 +54,11 @@ mqcs <- function(x, method = "sw", ...)
 #.........................................................................
 
 ##' @export
+##' @method print mqcs
 print.mqcs <- function(x, ...) str(x,1)
 #.........................................................................
 ##' @export
+##' @method summary mqcs
 summary.mqcs <- function(object, ...)
   #.........................................................................
 {
@@ -172,3 +179,136 @@ covariance <- function(x, stat, method, ...){
     
     
   }
+
+
+# mqcs.add function
+#-------------------------------------------------------------------------
+##' mqcs.add Add a matrix, data.frame or array object with a mqcs object
+##' 
+##' This function is used to join two objects of type matrix, data.frame or array and mqcs.
+##' 
+##' @param x   Object type mqcs
+##' @export
+##' 
+
+
+mqcs.add <- function(x, ...){
+  UseMethod("mqcs.add")
+}
+
+##' @rdname  mqcs.add 
+##' @method mqcs.add default
+##' @param value   Object type data.frame, matrix or array
+##' @param ...  arguments to be passed to or from methods.
+##' @export 
+
+
+mqcs.add.default <- function(x, value, ...){
+  
+  if (!inherits(x, "mqcs"))
+    stop("object must be mqcs")
+  
+  if (!is.matrix(value) & !is.data.frame(value) & !is.array(value))
+    stop("object must be a matrix, data.frame or array")
+  
+  if (class(value) == "matrix" || class(value) == "data.frame" ) {
+    p <- ncol(value) # quality characteristics
+    m <- nrow(value) # number of samples or observations
+    names <- colnames(value)    
+    value <- array(data.matrix(value),c(m,p,1))
+    colnames(value) <- names        
+  }   
+  
+  data <- x$mqcd
+  limits <- x$limits
+  data.name = x$data.name
+  type <- x$type
+  alpha <- x$alpha
+  
+  n1 <- dim(data)[3]
+  n2 <- dim(value)[3]
+  m1 <- dim(data)[1]
+  m2 <- dim(value)[1]
+  m <- m1 + m2
+  k1 <- dim(data)[2]
+  k2 <- dim(value)[2]
+  
+  if (n1 != n2) stop("The samples must be of the same dimension")
+  if (k1 != k2) stop("The samples must be of the same quality characteristics")
+  
+  xx <- array(,dim = c(m,k1,n1))
+  for (i in 1:n1 ){
+    xx[,,i] <- rbind(data[,,i],value[,,i])     
+  }
+  
+  z.mqcd <- mqcd(data =xx , data.name = data.name)
+  
+  mqcs.t2.mqcd(x = z.mqcd, limits = limits, alpha = alpha)
+  
+  z.mqcs <- switch(type, 
+                    "t2" = mqcs.t2.mqcd(x = z.mqcd, limits = limits, alpha = alpha),
+                    "mcusum" = mqcs.mcusum.mqcd(x = z.mqcd, limits = limits, alpha = alpha),
+                    "mewma" = mqcs.mewma.mqcd(x = z.mqcd, limits = limits, alpha = alpha),
+                    NULL)
+  result <- z.mqcs
+}
+
+
+#-------------------------------------------------------------------------
+# mstate.control
+#-------------------------------------------------------------------------
+##' Multivariate process state
+##' 
+##' This function removes observations from the sample which violates 
+##' the rules of a process under control
+##' @aliases mstate.control
+##' @param x  Object mqcd (Multivariate Quality Control Statistical)
+##' @param control a logical value indicating whether the initial sample comes from a process under control.
+##' @export
+##' @examples
+##' 
+##' ##
+##' ##  Continuous data 
+##' ##
+##' library(qcr)
+##' set.seed(356)
+##' x <- matrix(rnorm(66),ncol=3)
+##' x <- rbind(x,matrix(rexp(66,100),ncol=3))
+##' dim(x)
+##' x <-mqcd(x)
+##' str(x)
+##' x <-mqcs.mewma(x)
+##' str(x)
+##' plot(x)
+##' data.mqcs <- mstate.control(x)
+##' x <-mqcs.mewma(data.mqcs)
+##' plot(x)
+
+mstate.control <- function(x) 
+  #.........................................................................  
+{
+  if (!inherits(x, "mqcs"))
+    stop("an object of class 'mqcs' is required")
+  
+  if (length(x$violations)>0){
+    ii<-x$violations  
+    n <- dim(x$mqcd)[3]
+    m <- dim(x$mqcd)[1]
+    k <- dim(x$mqcd)[2]
+    xx <- array(dim = c(m-length(ii),k,n))
+    for (i in 1:n){ 
+      xx[,,i] <- x$mqcd[,,i][-ii,]  
+    }
+
+    result <- mqcd(data = xx, data.name = x$data.name)
+    
+  } else {
+    cat("The process is under control")
+  }
+  
+  oldClass(result) <- c("mqcd","array")
+  
+  invisible(result)
+  
+} #msate.control
+#.........................................................................

@@ -1,13 +1,13 @@
 #-----------------------------------------------------------------------------#
 #                                                                             #
-#                     QUALITY CONTROL STATISTICS IN R                         #
+#                  QUALITY CONTROL STATISTICS IN R                            #
 #                                                                             #
 #  An R package for statistical in-line quality control.                      #
 #                                                                             #
-#  Written by: Miguel A. Flores S?nchez                                       #
-#              Student Master of Statistical Techniques                       #
-#              University of The Coru?a, SPAIN                                #
-#              mflores@outlook.com                                            #
+#  Written by: Miguel A. Flores Sanchez                                       #
+#              Professor of the Mathematics Department                        #
+#              Escuela Politecnica Nacional, Ecuador                          #
+#              miguel.flores@epn.edu.ec                                       #
 #                                                                             #
 #-----------------------------------------------------------------------------#
 #-------------------------------------------------------------------------
@@ -41,25 +41,26 @@ mqcs.mewma <- function(x, ...) {
 ##' @rdname mqcs.mewma
 ##' @method mqcs.mewma default
 ##' @inheritParams mqcd
+##' @param limits a two-values vector specifying the control limits.
 ##' @param Xmv is the mean vector. It is only specified for Phase II or when the parameters of the distribution are known.
 ##' @param S is the sample covariance matrix. It is only used for Phase II or when the parameters of the distribution are known.
 ##' @param lambda is the smoothing constant. Only values of 0.1, 0.2,...,0.9 are allowed.
-##' @param method Is the method employed to compute the covatiance matrix
-##' in individual observation case. Two methods are used "sw" 
+##' @param method is the method employed to compute the covatiance matrix
+##' in the individual observation case. Two methods are used "sw" 
 ##' for compute according to (Sullivan,Woodall 1996a) and "hm" 
 ##' by (Holmes,Mergen 1993)
-##' @param plot a logical value indicating should be plotted. 
+##' @param plot a logical value indicating that it should be plotted. 
 ##' @author Edgar Santos-Fernandez
 ##' @export
 ##' 
-mqcs.mewma.default <- function(x, data.name = NULL, Xmv = NULL, S = NULL,
+mqcs.mewma.default <- function(x, data.name = NULL, limits = NULL, Xmv = NULL, S = NULL,
                             method = "sw", plot = FALSE, ...)
 #.........................................................................
   {
   
   obj<-mqcd(data= x, data.name = data.name)
 
-  result<-mqcs.mewma.mqcd(x = obj, 
+  result<-mqcs.mewma.mqcd(x = obj, limits = NULL,
                           Xmv = Xmv, S = S, lambda = 0.1,
                           method = method, plot = plot, ...)
 
@@ -73,7 +74,7 @@ mqcs.mewma.default <- function(x, data.name = NULL, Xmv = NULL, S = NULL,
 ##' @export
 ##' 
 
-mqcs.mewma.mqcd <- function(x, Xmv = NULL, S = NULL, 
+mqcs.mewma.mqcd <- function(x, limits = NULL, Xmv = NULL, S = NULL, 
                             lambda = 0.1,
                             method = "sw", plot = FALSE, ...) 
 #.........................................................................  
@@ -110,7 +111,7 @@ mqcs.mewma.mqcd <- function(x, Xmv = NULL, S = NULL,
   m1 <- rownames(h4)
   m2 <- colnames(h4)
   l <- lambda * 10
-  ucl <- h4[m1[l], m2[p - 1]]
+  if (is.null(limits)) limits <- c(lcl = 0, ucl = h4[m1[l], m2[p - 1]])
 
   
   for (i in 1 : m){
@@ -121,9 +122,9 @@ mqcs.mewma.mqcd <- function(x, Xmv = NULL, S = NULL,
     statistics[i,1] <- t(z[i,]) %*% solve(weig) %*% z[i,]
   }
   
-  limits <- c(lcl = 0, ucl = ucl)
   
-  violations <- which(statistics > ucl)
+  
+  violations <- which(statistics > limits[2])
     
 
   data.name <- attr(x, "data.name")

@@ -1,13 +1,13 @@
 #-----------------------------------------------------------------------------#
 #                                                                             #
-#            QUALITY CONTROL AND RELIABILITY IN R                             #
+#                  QUALITY CONTROL STATISTICS IN R                            #
 #                                                                             #
 #  An R package for statistical in-line quality control.                      #
 #                                                                             #
-#  Written by: Miguel A. Flores Sánchez                                       #
-#              Student Master of Statistical Techniques                       #
-#              University of The Coruña, SPAIN                                #
-#              mflores@outlook.com                                            #
+#  Written by: Miguel A. Flores Sanchez                                       #
+#              Professor of the Mathematics Department                        #
+#              Escuela Politecnica Nacional, Ecuador                          #
+#              miguel.flores@epn.edu.ec                                       #
 #                                                                             #
 #-----------------------------------------------------------------------------#
 #-----------------------------------------------------------------------------#
@@ -47,19 +47,20 @@ mqcs.mcusum <- function(x, ...) {
 ##' @rdname mqcs.mcusum
 ##' @method mqcs.mcusum default
 ##' @inheritParams mqcd
+##' @param limits a two-values vector specifying the control limits.
 ##' @param Xmv is the mean vector. It is only specified for Phase II or when the parameters of the distribution are known.
 ##' @param S is the sample covariance matrix. It is only used for Phase II or when the parameters of the distribution are known.
 ##' @param k is a constant used in MCUSUM chart. Frequently k = 0.5
 ##' @param h is a constant used in MCUSUM chart. Usually h = 5.5
-##' @param method Is the method employed to compute the covatiance matrix
-##' in individual observation case. Two methods are used "sw" 
+##' @param method is the method employed to compute the covatiance matrix
+##' in the individual observation case. Two methods are used "sw" 
 ##' for compute according to (Sullivan,Woodall 1996a) and "hm" 
 ##' by (Holmes,Mergen 1993)
-##' @param plot a logical value indicating should be plotted. 
+##' @param plot a logical value indicating that it should be plotted. 
 ##' @author Edgar Santos-Fernandez
 ##' @export
 ##' 
-mqcs.mcusum.default <- function(x, data.name = NULL, Xmv = NULL, S = NULL,
+mqcs.mcusum.default <- function(x, data.name = NULL, limits = NULL, Xmv = NULL, S = NULL,
                             k = 0.5, h= 5.5,
                             method = "sw", plot = FALSE, ...)
 #.........................................................................
@@ -67,7 +68,7 @@ mqcs.mcusum.default <- function(x, data.name = NULL, Xmv = NULL, S = NULL,
   
   obj <- mqcd(data= x, data.name = data.name)
 
-  result <- mqcs.mcusum.mqcd(x = obj, Xmv = Xmv, 
+  result <- mqcs.mcusum.mqcd(x = obj, Xmv = Xmv, limits = NULL,
                        S = S, k = k, h = h,
                        method = method, plot = plot, ...)
 
@@ -84,7 +85,8 @@ mqcs.mcusum.default <- function(x, data.name = NULL, Xmv = NULL, S = NULL,
 ##' @export
 ##' 
 
-mqcs.mcusum.mqcd <- function(x, Xmv = NULL, S = NULL, 
+
+mqcs.mcusum.mqcd <- function(x, limits = NULL, Xmv = NULL, S = NULL, 
                             k = 0.5, h = 5.5,
                             method = "sw", plot = FALSE, ...) 
 #.........................................................................  
@@ -104,7 +106,8 @@ mqcs.mcusum.mqcd <- function(x, Xmv = NULL, S = NULL,
     
   statistics <- matrix(0,m,1)
   
-  ucl <- h
+  if (is.null(limits)) limits <- c(lcl = 0, ucl = h)
+  
   dif <- sweep(x.jk,2,Xmv)
   s <- matrix(0,m,p)
   ci <- matrix(0,m,1)
@@ -124,9 +127,8 @@ mqcs.mcusum.mqcd <- function(x, Xmv = NULL, S = NULL,
     statistics[i]=sqrt(s[i,]%*%solve((S/n))%*%(s[i,]))
   } 
   
-  limits <- c(lcl = 0, ucl = ucl)
   
-  violations <- which(statistics > ucl)
+  violations <- which(statistics > limits[2])
     
 
   data.name <- attr(x, "data.name")

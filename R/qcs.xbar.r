@@ -1,23 +1,23 @@
 #-----------------------------------------------------------------------------#
 #                                                                             #
-#                     QUALITY CONTROL STATISTICS IN R                         #
+#                  QUALITY CONTROL STATISTICS IN R                            #
 #                                                                             #
 #  An R package for statistical in-line quality control.                      #
 #                                                                             #
-#  Written by: Miguel A. Flores S?nchez                                       #
-#              Student Master of Statistical Techniques                       #
-#              University of The Coru?a, SPAIN                                #
-#              mflores@outlook.com                                            #
+#  Written by: Miguel A. Flores Sanchez                                       #
+#              Professor of the Mathematics Department                             #
+#              Escuela Politecnica Nacional, Ecuador                          #
+#              miguel.flores@epn.edu.ec                                       #
 #                                                                             #
 #-----------------------------------------------------------------------------#
 #-------------------------------------------------------------------------
 # xbar chart
 #-------------------------------------------------------------------------
-##' Function to plot Shewhart xbar chart
+##' Function to plot the Shewhart xbar chart
 ##'
 ##' This function is used to compute statistics required by the xbar chart.
 ##'
-##' @param x   an R object (used to select the method). See details.
+##' @param x   Object qcd (Quality Control Data)
 ##' @param ... arguments passed to or from methods.
 ##' @export
 ##' @references Montgomery, D.C. (2000)
@@ -79,7 +79,7 @@ qcs.xbar <- function(x, ...) {
 ##' @param conf.nsigma  a numeric value used to compute control limits, specifying the
 ##' number of standard deviations (if \code{conf.nsigma} > 1) or the confidence level (if 0
 ##' < \code{conf.nsigma} < 1).
-##' @param limits a two-values vector specifying control limits.
+##' @param limits a two-value vector specifying control limits.
 ##' @param plot a logical value indicating should be plotted.
 ##' @export
 ##' 

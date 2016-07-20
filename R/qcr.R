@@ -1,17 +1,24 @@
-##' Quality control and reliability
+##' Quality Control Review
 ##'
-##' This package allows to generate Shewhart-type charts and to obtain 
-##' numerical results of interest to the quality control of a process 
+##' Allows to generate Shewhart-type charts and to obtain 
+##' numerical results of interest for a process quality control
 ##' (involving  continuous, attribute or count data).
 ##' This package provides basic functionality for univariable and multivariable 
 ##' quality control analysis, including: xbar, xbar-one, S, R, n, np, c, g, ewna, cusum, 
-##' mewna, mcusum  and T2 charts. 
-##'
+##' mewna, mcusum  and T2 charts. Additionally have non parametric control  charts multivariate. 
+##' Parametric and nonparametric Process Capability Indices.
 ##' @name qcr
 ##' @aliases qcr
 ##' @docType package
-##' @title Quality Control and Reability
+##' @title Quality Control Review 
 ##' @import qcc
+##' @import fda.usc
+##' @import mvtnorm
+##' @import qualityTools
+##' @import MASS 
+##' @importFrom graphics abline axis box grid hist layout legend lines par points rect text title
+##' @importFrom utils str
+##' @importFrom stats complete.cases cov dnorm pnorm qbeta qchisq qf qnorm quantile sd
 NULL
 
 ##' @title Vickers hardness data
@@ -94,7 +101,7 @@ NULL
 
 
 ##' @title Level of employment data
-##' @description A Spanish-Argentina hotel company wants to control 
+##' @description A Spaniard-Argentinian hotel company wants to control 
 ##' the level of employment in their establishments. 
 ##' For this it is going to make a continuous control 
 ##' that measures the amount of occupants in terms of percentage. 
@@ -120,16 +127,16 @@ NULL
 NULL
 
 ##' @title Oxidation Onset Temperature
-##' @description This database contains information on the level of purity 
-##' of each batch of Picual varities. Then we have the types of oils 
+##' @description This database contains information about the level of purity 
+##' of each batch of Picual varities. Then we have the type of oil 
 ##' by measuring the Oxidation Onset Temperature. 
-##' We have 50 subsamples of oils with their temperature to oxide.
+##' We have 50 subsamples of oil with their temperature to oxide.
 ##'
 ##' @name oxidation
 ##' @docType data
 ##' @format A data frame with 250 observations on the following 2 variables:
 ##' \describe{
-##'   \item{OOT}{That is a quantitative variable that controls the quality of the oil.}
+##'   \item{OOT}{That is a quantitative variable that controls the quality of oil.}
 ##'   \item{sample}{sample id}
 ##' }
 ##' @keywords datasets
@@ -145,7 +152,7 @@ NULL
 
 ##' @title Circuit boards data
 ##' @description Number of nonconformities observed in 26 successive samples of 100 printed
-##' circuit boards. Sample 6 and 20 are outside the control limits. Sample 6
+##' circuit boards. Sample 6 and 20 are out of control limits. Sample 6
 ##' was examined by a new inspector and he did not recognize several type of
 ##' nonconformities that could have been present. Furthermore, the unusually
 ##' large number of nonconformities in sample 20 resulted from a temperature
@@ -184,7 +191,7 @@ NULL
 ##' seam or around the bottom joint. If this occurs a can is considered
 ##' nonconforming. The data were collected as 30 samples of 50 cans each at
 ##' half-hour intervals over a three-shift period in which the machine was in
-##' continuous operation. From sample 15 used a new bacth of cardboard stock
+##' continuous operation. From sample 15 used, a new bacth of cardboard stock
 ##' was punt into production. Sample 23 was obtained when an inexperienced
 ##' operator was temporarily assigned to the machine. After the first 30
 ##' samples, a machine adjustment was made. Then further 24 samples were taken
@@ -267,7 +274,7 @@ NULL
 NULL
 
 ##' @title Target archery dataset in the ranking round (used as Phase I)
-##' @description It consists in an stage in which the archer shoots 72 arrows in 12 ends of six arrows. 
+##' @description It consists of a stage in which the archer shoots 72 arrows in 12 ends of six arrows. 
 ##' The information is given in x and y coordinates.
 ##' 
 ##' @name archery1
@@ -286,7 +293,7 @@ NULL
 
 
 ##' @title Dowel pin dataset
-##' @description Diameter and length of a manufacturing process of a dowel pin##' 
+##' @description Diameter and length of a manufacturing process of a dowel pin 
 ##' 
 ##' @name dowel1
 ##' @docType data
@@ -301,3 +308,23 @@ NULL
 ##' data(dowel1)
 ##' str(dowel1) ; plot(dowel1)
 NULL
+
+
+
+## @title TG curves dataset
+## @description , 105 TG curves and 90 calorimetric curves were obtained from 
+## calcium oxalate monohydrate. The obtained curves correspond to
+## seven simulated laboratories, 15 curves per laboratory 
+## @name curves
+## @docType data
+## @format An array of (15 x 1000 x 7).
+## \describe{ 
+## \item{m}{curves}
+## \item{p}{the points observed in each curve}
+## }
+## @keywords datasets
+## @examples
+##'
+##' data(curves)
+##' str(curves)
+#NULL
