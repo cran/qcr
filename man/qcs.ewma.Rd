@@ -8,13 +8,31 @@
 \usage{
 qcs.ewma(x, ...)
 
-\method{qcs.ewma}{default}(x, var.index = 1, sample.index = 2,
-  covar.index = NULL, covar.names = NULL, data.name = NULL,
-  sizes = NULL, center = NULL, std.dev = NULL, nsigma = 3,
-  lambda = 0.2, plot = FALSE, ...)
+\method{qcs.ewma}{default}(
+  x,
+  var.index = 1,
+  sample.index = 2,
+  covar.index = NULL,
+  covar.names = NULL,
+  data.name = NULL,
+  sizes = NULL,
+  center = NULL,
+  std.dev = NULL,
+  nsigma = 3,
+  lambda = 0.2,
+  plot = FALSE,
+  ...
+)
 
-\method{qcs.ewma}{qcd}(x, center = NULL, std.dev = NULL, nsigma = 3,
-  lambda = 0.2, plot = FALSE, ...)
+\method{qcs.ewma}{qcd}(
+  x,
+  center = NULL,
+  std.dev = NULL,
+  nsigma = 3,
+  lambda = 0.2,
+  plot = FALSE,
+  ...
+)
 }
 \arguments{
 \item{x}{Object qcd (Quality Control Data)}
@@ -62,4 +80,12 @@ This function is used to compute statistics required by the ewma chart.
 
 This function is used to compute statistics required by the ewma chart.
 }
-
+\examples{
+library(qcr)
+data(pistonrings)
+attach(pistonrings)
+res.qcd <- qcd(pistonrings, type.data = "dependence")
+res.qcs <- qcs.ewma(res.qcd, type = "ewma")
+summary(res.qcs)
+plot(res.qcs)
+}

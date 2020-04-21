@@ -2,8 +2,8 @@
 % Please edit documentation in R/mqcs.R
 \name{mqcs}
 \alias{mqcs}
-\alias{print.mqcs}
 \alias{summary.mqcs}
+\alias{print.mqcs}
 \title{It computes statistics to be used in Multivariante Quality Control}
 \usage{
 mqcs(x, method = "sw", ...)
@@ -22,4 +22,3 @@ by (Holmes,Mergen 1993)}
 Create an object of class 'mqcs' to perform statistical quality control.
 This function is used to compute statistics required to plot Multivariate Control Charts
 }
-

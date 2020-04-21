@@ -20,6 +20,7 @@
 ##' @param x   Object qcd (Quality Control Data)
 ##' @param ... arguments passed to or from methods.
 ##' @export
+##' @examples 
 ##' library(qcr)
 ##' data(pistonrings)
 ##' attach(pistonrings)

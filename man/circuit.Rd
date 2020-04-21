@@ -4,13 +4,15 @@
 \name{circuit}
 \alias{circuit}
 \title{Circuit boards data}
-\format{A data frame with 46 observations on the following 4 variables:
+\format{
+A data frame with 46 observations on the following 4 variables:
 \describe{
   \item{x}{number of defectives in 100 printed circuit boards (inspection unit)}
   \item{sample}{sample ID}
   \item{size}{sample size}
   \item{trial}{trial sample indicator (TRUE/FALSE)}
-}}
+}
+}
 \description{
 Number of nonconformities observed in 26 successive samples of 100 printed
 circuit boards. Sample 6 and 20 are out of control limits. Sample 6
@@ -35,4 +37,3 @@ Montgomery, D.C. (1991) \emph{Introduction to Statistical
 Quality Control}, 2nd ed, New York, John Wiley & Sons, pp. 173--175
 }
 \keyword{datasets}
-

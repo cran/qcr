@@ -4,12 +4,14 @@
 \name{employment}
 \alias{employment}
 \title{Level of employment data}
-\format{A data frame with 288 observations on the following 3 variables:
+\format{
+A data frame with 288 observations on the following 3 variables:
 \describe{
   \item{occupantion}{the amount of occupants in terms of percentage}
   \item{sample}{sample id}
   \item{hemisphere}{Hemisphere}
-}}
+}
+}
 \description{
 A Spaniard-Argentinian hotel company wants to control 
 the level of employment in their establishments. 
@@ -27,4 +29,3 @@ plot(occupantion, type="b")
 detach(employment)
 }
 \keyword{datasets}
-

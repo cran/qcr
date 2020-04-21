@@ -4,11 +4,13 @@
 \name{dowel1}
 \alias{dowel1}
 \title{Dowel pin dataset}
-\format{A data frame with 40 observations on the following 2 variables.
+\format{
+A data frame with 40 observations on the following 2 variables.
 \describe{ 
 \item{diameter}{a numeric vector}
 \item{length}{a numeric vector}
-}}
+}
+}
 \description{
 Diameter and length of a manufacturing process of a dowel pin
 }
@@ -18,4 +20,3 @@ data(dowel1)
 str(dowel1) ; plot(dowel1)
 }
 \keyword{datasets}
-

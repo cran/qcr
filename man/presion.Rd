@@ -4,12 +4,14 @@
 \name{presion}
 \alias{presion}
 \title{Level of presion data}
-\format{A data frame with 180 observations on the following 3 variables:
+\format{
+A data frame with 180 observations on the following 3 variables:
 \describe{
   \item{presion}{presion level}
   \item{sample}{sample id}
   \item{measur}{pressures measured: 0.1 y 10 MPa}
-}}
+}
+}
 \description{
 A shipyard of recreational boats manufacturing, 
 intended to optimize and control the mechanical properties hull yacht models. 
@@ -26,4 +28,3 @@ plot(presion$presion, type="b")
 detach(presion)
 }
 \keyword{datasets}
-

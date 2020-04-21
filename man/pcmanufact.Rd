@@ -4,12 +4,14 @@
 \name{pcmanufact}
 \alias{pcmanufact}
 \title{Personal computer manufacturer data}
-\format{A data frame with 10 observations on the following 2 variables.
+\format{
+A data frame with 10 observations on the following 2 variables.
 \describe{
 \item{x}{number of nonconformities (inspection units)}
 \item{sample}{sample ID}
 \item{size}{number of computers inspected}
-}}
+}
+}
 \description{
 A personal computer manufacturer counts the number of nonconformities per
 unit on the final assembly line. He collects data on 20 samples of 5
@@ -26,4 +28,3 @@ Montgomery, D.C. (1991) \emph{Introduction to Statistical
 Quality Control}, 2nd ed, New York, John Wiley & Sons, pp. 181--182
 }
 \keyword{datasets}
-

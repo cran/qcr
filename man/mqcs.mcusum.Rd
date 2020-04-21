@@ -8,12 +8,30 @@
 \usage{
 mqcs.mcusum(x, ...)
 
-\method{mqcs.mcusum}{default}(x, data.name = NULL, limits = NULL,
-  Xmv = NULL, S = NULL, k = 0.5, h = 5.5, method = "sw",
-  plot = FALSE, ...)
+\method{mqcs.mcusum}{default}(
+  x,
+  data.name = NULL,
+  limits = NULL,
+  Xmv = NULL,
+  S = NULL,
+  k = 0.5,
+  h = 5.5,
+  method = "sw",
+  plot = FALSE,
+  ...
+)
 
-\method{mqcs.mcusum}{mqcd}(x, limits = NULL, Xmv = NULL, S = NULL,
-  k = 0.5, h = 5.5, method = "sw", plot = FALSE, ...)
+\method{mqcs.mcusum}{mqcd}(
+  x,
+  limits = NULL,
+  Xmv = NULL,
+  S = NULL,
+  k = 0.5,
+  h = 5.5,
+  method = "sw",
+  plot = FALSE,
+  ...
+)
 }
 \arguments{
 \item{x}{an R object (used to select the method). See details.}
@@ -59,4 +77,3 @@ plot(res.mqcs, title =" MCUSUM Control Chart for dowel1")
 \author{
 Edgar Santos-Fernandez
 }
-

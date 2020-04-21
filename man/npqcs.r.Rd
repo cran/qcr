@@ -8,12 +8,26 @@
 \usage{
 npqcs.r(x, ...)
 
-\method{npqcs.r}{default}(x, G, data.name = NULL, limits = NULL,
-  method = c("Tukey", "Liu", "Mahalanobis", "RP", "LD"), alpha = 0.01,
-  plot = FALSE, ...)
+\method{npqcs.r}{default}(
+  x,
+  G,
+  data.name = NULL,
+  limits = NULL,
+  method = c("Tukey", "Liu", "Mahalanobis", "RP", "LD"),
+  alpha = 0.01,
+  plot = FALSE,
+  ...
+)
 
-\method{npqcs.r}{npqcd}(x, data.name, limits = NULL, method = c("Tukey",
-  "Liu", "Mahalanobis", "RP", "LD"), alpha = 0.01, plot = FALSE, ...)
+\method{npqcs.r}{npqcd}(
+  x,
+  data.name,
+  limits = NULL,
+  method = c("Tukey", "Liu", "Mahalanobis", "RP", "LD"),
+  alpha = 0.01,
+  plot = FALSE,
+  ...
+)
 }
 \arguments{
 \item{x}{An object npqcd (Non parametric Quality Control Data)}
@@ -39,12 +53,6 @@ This function is used to compute statistics required by the r chart.
 }
 \examples{
 \dontrun{
-##
-##  Continuous data 
-##
-##
-##  Continuous data 
-##
 library(qcr)
 set.seed(356)
 mu<-c(0,0)
@@ -65,4 +73,3 @@ plot(res.npqcs,title =" r Control Chart")  }
 \references{
 Regina Liu (1995)
 }
-

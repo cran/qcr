@@ -4,12 +4,14 @@
 \name{plates}
 \alias{plates}
 \title{Vickers hardness data}
-\format{A data frame with 250 observations on the following 2 variables:
+\format{
+A data frame with 250 observations on the following 2 variables:
 \describe{
   \item{hardness}{Vickers hardness corresponding to different
    areas of artificial stone}
   \item{sample}{sample id}
-}}
+}
+}
 \description{
 A known chemical company is developing a patent for 
 a new variant of artificial stone composed mostly of quartz ( 93wt %) 
@@ -28,4 +30,3 @@ plot(hardness, type="b")
 detach(plates)
 }
 \keyword{datasets}
-

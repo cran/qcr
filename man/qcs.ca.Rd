@@ -4,9 +4,17 @@
 \alias{qcs.ca}
 \title{Capability Analysis}
 \usage{
-qcs.ca(object, limits = c(lsl = -3, usl = 3), target = NULL,
-  std.dev = NULL, nsigmas = 3, confidence = 0.9973, plot = TRUE,
-  main = NULL, ...)
+qcs.ca(
+  object,
+  limits = c(lsl = -3, usl = 3),
+  target = NULL,
+  std.dev = NULL,
+  nsigmas = 3,
+  confidence = 0.9973,
+  plot = TRUE,
+  main = NULL,
+  ...
+)
 }
 \arguments{
 \item{object}{qcs object of type \code{"qcs.xbar"} or \code{"qcs.one"}.}
@@ -59,4 +67,3 @@ No 6, Editors: H-J Lenz and P-TH Wilrich. Physica-Verlag, Heidelberg, 290-311.\c
 Hubele and Vannman (2004). \emph{The E???ect of Pooled and Un-pooled Variance Estimators on Cpm When Using Subsamples}.
 Journal Quality Technology, 36, 207-222.\cr
 }
-

@@ -34,4 +34,3 @@ data.mqcs <- mstate.control(x)
 x <-mqcs.mewma(data.mqcs)
 plot(x)
 }
-

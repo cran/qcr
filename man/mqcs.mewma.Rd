@@ -8,11 +8,27 @@
 \usage{
 mqcs.mewma(x, ...)
 
-\method{mqcs.mewma}{default}(x, data.name = NULL, limits = NULL,
-  Xmv = NULL, S = NULL, method = "sw", plot = FALSE, ...)
+\method{mqcs.mewma}{default}(
+  x,
+  data.name = NULL,
+  limits = NULL,
+  Xmv = NULL,
+  S = NULL,
+  method = "sw",
+  plot = FALSE,
+  ...
+)
 
-\method{mqcs.mewma}{mqcd}(x, limits = NULL, Xmv = NULL, S = NULL,
-  lambda = 0.1, method = "sw", plot = FALSE, ...)
+\method{mqcs.mewma}{mqcd}(
+  x,
+  limits = NULL,
+  Xmv = NULL,
+  S = NULL,
+  lambda = 0.1,
+  method = "sw",
+  plot = FALSE,
+  ...
+)
 }
 \arguments{
 \item{x}{an R object (used to select the method). See details.}
@@ -56,4 +72,3 @@ plot(res.mqcs, title =" MEWMA Control Chart for dowel1")
 \author{
 Edgar Santos-Fernandez
 }
-

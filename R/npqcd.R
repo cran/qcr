@@ -49,7 +49,7 @@ npqcd <- function(x, G = NULL, data.name = NULL)
   
   
 
-  if (class(x) == "matrix" || class(x) == "data.frame") {
+  if (inherits(x, "matrix") || inherits(x, "data.frame")) {
     p <- ncol(x) # quality characteristics
     m <- nrow(x) # number of samples or observations
     names <- colnames(x)    

@@ -2,21 +2,42 @@
 % Please edit documentation in R/plot.npqcs.R
 \name{plot.npqcs}
 \alias{plot.npqcs}
+\alias{plot.npqcs.r}
 \alias{plot.npqcs.Q}
 \alias{plot.npqcs.S}
-\alias{plot.npqcs.r}
 \title{Plot method for 'npqcs' objects}
 \usage{
 \method{plot}{npqcs}(x, title, subtitle, xlab, ylab, ylim, lim = TRUE, ...)
 
-\method{plot}{npqcs.r}(x, title = NULL, subtitle = NULL, xlab = NULL,
-  ylab = NULL, ylim = NULL, ...)
+\method{plot}{npqcs.r}(
+  x,
+  title = NULL,
+  subtitle = NULL,
+  xlab = NULL,
+  ylab = NULL,
+  ylim = NULL,
+  ...
+)
 
-\method{plot}{npqcs.Q}(x, title = NULL, subtitle = NULL, xlab = NULL,
-  ylab = NULL, ylim = NULL, ...)
+\method{plot}{npqcs.Q}(
+  x,
+  title = NULL,
+  subtitle = NULL,
+  xlab = NULL,
+  ylab = NULL,
+  ylim = NULL,
+  ...
+)
 
-\method{plot}{npqcs.S}(x, title = NULL, subtitle = NULL, xlab = NULL,
-  ylab = NULL, ylim = NULL, ...)
+\method{plot}{npqcs.S}(
+  x,
+  title = NULL,
+  subtitle = NULL,
+  xlab = NULL,
+  ylab = NULL,
+  ylim = NULL,
+  ...
+)
 }
 \arguments{
 \item{x}{Object npqcs (Multivarite Quality Control Statical)}
@@ -39,4 +60,3 @@
 Generic function for plotting Multivarite charts of object of class 'npqcs' to perform statistical 
 quality control.
 }
-

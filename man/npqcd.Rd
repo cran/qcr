@@ -29,4 +29,3 @@ x <-matrix(x,ncol=3)
 data.npqcd <- npqcd(data,x)
 str(data.npqcd)
 }
-

@@ -8,13 +8,31 @@
 \usage{
 qcs.R(x, ...)
 
-\method{qcs.R}{default}(x, var.index = 1, sample.index = 2,
-  covar.index = NULL, covar.names = NULL, data.name = NULL,
-  sizes = NULL, center = NULL, std.dev = c("UWAVE-R", "MVLUE-R"),
-  conf.nsigma = 3, limits = NULL, plot = FALSE, ...)
+\method{qcs.R}{default}(
+  x,
+  var.index = 1,
+  sample.index = 2,
+  covar.index = NULL,
+  covar.names = NULL,
+  data.name = NULL,
+  sizes = NULL,
+  center = NULL,
+  std.dev = c("UWAVE-R", "MVLUE-R"),
+  conf.nsigma = 3,
+  limits = NULL,
+  plot = FALSE,
+  ...
+)
 
-\method{qcs.R}{qcd}(x, center = NULL, std.dev = c("UWAVE-R", "MVLUE-R"),
-  conf.nsigma = 3, limits = NULL, plot = FALSE, ...)
+\method{qcs.R}{qcd}(
+  x,
+  center = NULL,
+  std.dev = c("UWAVE-R", "MVLUE-R"),
+  conf.nsigma = 3,
+  limits = NULL,
+  plot = FALSE,
+  ...
+)
 }
 \arguments{
 \item{x}{an R object (used to select the method). See details.}
@@ -78,4 +96,3 @@ plot(res.qcs,title="Control Chart R for pistonrings")
 summary(res.qcs)  
 
 }
-

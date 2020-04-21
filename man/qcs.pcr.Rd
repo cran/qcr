@@ -4,11 +4,21 @@
 \alias{qcs.pcr}
 \title{Process capability indices for a given dataset and distribution}
 \usage{
-qcs.pcr(object, distribution = c("normal", "beta", "chi-squared",
-  "exponential", "f", "geometric", "lognormal", "log-normal", "logistic", "t",
-  "negative binomial", "poisson", "weibull", "gamma"), limits = c(lsl = -3,
-  usl = 3), target = NULL, std.dev = NULL, boxcox = FALSE,
-  lambda = c(-5, 5), confidence = 0.9973, plot = TRUE, main = NULL, ...)
+qcs.pcr(
+  object,
+  distribution = c("normal", "beta", "chi-squared", "exponential", "f", "geometric",
+    "lognormal", "log-normal", "logistic", "t", "negative binomial", "poisson",
+    "weibull", "gamma"),
+  limits = c(lsl = -3, usl = 3),
+  target = NULL,
+  std.dev = NULL,
+  boxcox = FALSE,
+  lambda = c(-5, 5),
+  confidence = 0.9973,
+  plot = TRUE,
+  main = NULL,
+  ...
+)
 }
 \arguments{
 \item{object}{qcs object of type \code{"qcs.xbar"} or \code{"qcs.one"}.}
@@ -53,4 +63,3 @@ qcs.pcr(xbar, "weibull", limits = limits)
 Montgomery, D.C. (1991) \emph{Introduction to Statistical Quality Control}, 2nd
 ed, New York, John Wiley & Sons. \cr
 }
-

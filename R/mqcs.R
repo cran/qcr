@@ -127,7 +127,8 @@ summary.mqcs <- function(object, ...)
 covariance <- function(x, stat, method, ...){
     p <- ncol(x) # quality characteristics
     m <- nrow(x) # sample
-    if (class(x) == "matrix" || class(x) == "data.frame") (x <- array(data.matrix(x),c(m,p,1)))
+    if (inherits(x, "matrix") || inherits(x, "data.frame"))
+        x <- array(data.matrix(x),c(m,p,1))
     n <- dim(x)[3] # observations or sample size
     
     s.jk <- matrix(0,m,p ^ 2) # matrix of the covariances of observations
@@ -211,7 +212,7 @@ mqcs.add.default <- function(x, value, ...){
   if (!is.matrix(value) & !is.data.frame(value) & !is.array(value))
     stop("object must be a matrix, data.frame or array")
   
-  if (class(value) == "matrix" || class(value) == "data.frame" ) {
+  if (inherits(value, "matrix") || inherits(value, "data.frame")) {
     p <- ncol(value) # quality characteristics
     m <- nrow(value) # number of samples or observations
     names <- colnames(value)    

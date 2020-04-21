@@ -40,4 +40,3 @@ plot(res.qcs,title="Control Chart Xbar for pistonrings III")
 summary(res.qcs)  
 
 }
-

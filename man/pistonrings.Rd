@@ -4,12 +4,14 @@
 \name{pistonrings}
 \alias{pistonrings}
 \title{Piston rings data}
-\format{A data frame with 200 observations on the following 3 variables.
+\format{
+A data frame with 200 observations on the following 3 variables.
 \describe{ 
 \item{diameter}{a numeric vector}
 \item{sample}{sample ID}
 \item{trial}{trial sample indicator (TRUE/FALSE)}
- }}
+ }
+}
 \description{
 Piston rings for an automotive engine are produced by a forging process.
 The inside diameter of the rings manufactured by the process is measured on
@@ -31,4 +33,3 @@ Montgomery, D.C. (1991) \emph{Introduction to Statistical
 Quality Control}, 2nd ed, New York, John Wiley & Sons, pp. 206--213
 }
 \keyword{datasets}
-

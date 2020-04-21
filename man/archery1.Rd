@@ -4,11 +4,13 @@
 \name{archery1}
 \alias{archery1}
 \title{Target archery dataset in the ranking round (used as Phase I)}
-\format{An array of (24 x 2 x 3).
+\format{
+An array of (24 x 2 x 3).
 \describe{ 
 \item{x-coordinate}{x-coordinate}
 \item{y-coordinate}{y-coordinate}
-}}
+}
+}
 \description{
 It consists of a stage in which the archer shoots 72 arrows in 12 ends of six arrows. 
 The information is given in x and y coordinates.
@@ -19,4 +21,3 @@ data(archery1)
 str(archery1) ; plot(archery1)
 }
 \keyword{datasets}
-

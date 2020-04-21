@@ -8,13 +8,31 @@
 \usage{
 qcs.S(x, ...)
 
-\method{qcs.S}{default}(x, var.index = 1, sample.index = 2,
-  covar.index = NULL, covar.names = NULL, data.name = NULL,
-  sizes = NULL, center = NULL, std.dev = c("UWAVE-SD", "MVLUE-SD",
-  "RMSDF"), conf.nsigma = 3, limits = NULL, plot = FALSE, ...)
+\method{qcs.S}{default}(
+  x,
+  var.index = 1,
+  sample.index = 2,
+  covar.index = NULL,
+  covar.names = NULL,
+  data.name = NULL,
+  sizes = NULL,
+  center = NULL,
+  std.dev = c("UWAVE-SD", "MVLUE-SD", "RMSDF"),
+  conf.nsigma = 3,
+  limits = NULL,
+  plot = FALSE,
+  ...
+)
 
-\method{qcs.S}{qcd}(x, center = NULL, std.dev = c("UWAVE-SD", "MVLUE-SD",
-  "RMSDF"), conf.nsigma = 3, limits = NULL, plot = FALSE, ...)
+\method{qcs.S}{qcd}(
+  x,
+  center = NULL,
+  std.dev = c("UWAVE-SD", "MVLUE-SD", "RMSDF"),
+  conf.nsigma = 3,
+  limits = NULL,
+  plot = FALSE,
+  ...
+)
 }
 \arguments{
 \item{x}{an R object (used to select the method). See details.}
@@ -85,4 +103,3 @@ summary(res.qcs)
 \seealso{
 \code{\link{qcs}}, \code{\link{qcd}}
 }
-

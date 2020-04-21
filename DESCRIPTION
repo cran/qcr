@@ -1,8 +1,8 @@
 Package: qcr
 Type: Package
 Title: Quality Control Review
-Version: 1.0
-Date: 2016-07-19
+Version: 1.2
+Date: 2020-04-21
 Authors@R: c(
       person("Miguel","Flores",role=c("aut","cre"), email="ma.flores@outlook.com"),
 			person("Ruben","Fernandez",role="ctb"),
@@ -10,22 +10,27 @@ Authors@R: c(
 			person("Javier","Tarrio-Saavedra",role="ctb")
       )
 Depends: R (>= 2.10), qcc, fda.usc, mvtnorm, qualityTools, MASS
-Description: Allows to generate Shewhart-type charts and to obtain
-    numerical results of interest for a process quality control
-    (involving  continuous, attribute or count data).
-    This package provides basic functionality for univariable and multivariable
-    quality control analysis, including: xbar, xbar-one, S, R, ewna, cusum,
-    mewna, mcusum  and T2 charts. Additionally have nonparametric
-    control  charts multivariate. Parametric and nonparametric Process Capability Indices.
+Description: Univariate and multivariate SQC tools that completes and increases
+    the SQC techniques available in R. Apart from integrating different R packages devoted to SQC
+    ('qcc','MSQC'), provides nonparametric tools that are highly useful when Gaussian assumption is not
+    met. This package computes standard univariate control charts for individual measurements, X-bar,
+    S, R, p, np, c, u, EWMA and CUSUM. In addition, it includes functions to perform multivariate
+    control charts such as Hotelling T2, MEWMA and MCUSUM. As representative feature, multivariate
+    nonparametric alternatives based on data depth are implemented in this package: r, Q and S control
+    charts. In addition, Phase I and II control charts for functional data are included. This package also allows 
+    the estimation of the most complete set of capability indices from first to fourth generation, covering the
+    nonparametric alternatives, and performing the corresponding capability analysis graphical outputs,
+    including the process capability plots.
 License: GPL (>= 2)
 LazyData: yes
+Encoding: UTF-8
+RoxygenNote: 7.1.0
+NeedsCompilation: no
+Packaged: 2020-04-21 14:47:05 UTC; MFlores
 Author: Miguel Flores [aut, cre],
   Ruben Fernandez [ctb],
   Salvador Naya [ctb],
   Javier Tarrio-Saavedra [ctb]
 Maintainer: Miguel Flores <ma.flores@outlook.com>
-RoxygenNote: 5.0.1
-NeedsCompilation: no
-Packaged: 2016-07-19 17:09:06 UTC; MiguelA
 Repository: CRAN
-Date/Publication: 2016-07-20 01:09:46
+Date/Publication: 2020-04-21 22:00:02 UTC

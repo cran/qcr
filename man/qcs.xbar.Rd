@@ -8,15 +8,31 @@
 \usage{
 qcs.xbar(x, ...)
 
-\method{qcs.xbar}{default}(x, var.index = 1, sample.index = 2,
-  covar.index = NULL, covar.names = NULL, data.name = NULL,
-  sizes = NULL, center = NULL, std.dev = c("UWAVE-R", "UWAVE-SD",
-  "MVLUE-R", "MVLUE-SD", "RMSDF"), conf.nsigma = 3, limits = NULL,
-  plot = FALSE, ...)
+\method{qcs.xbar}{default}(
+  x,
+  var.index = 1,
+  sample.index = 2,
+  covar.index = NULL,
+  covar.names = NULL,
+  data.name = NULL,
+  sizes = NULL,
+  center = NULL,
+  std.dev = c("UWAVE-R", "UWAVE-SD", "MVLUE-R", "MVLUE-SD", "RMSDF"),
+  conf.nsigma = 3,
+  limits = NULL,
+  plot = FALSE,
+  ...
+)
 
-\method{qcs.xbar}{qcd}(x, center = NULL, std.dev = c("UWAVE-R", "UWAVE-SD",
-  "MVLUE-R", "MVLUE-SD", "RMSDF"), conf.nsigma = 3, limits = NULL,
-  plot = FALSE, ...)
+\method{qcs.xbar}{qcd}(
+  x,
+  center = NULL,
+  std.dev = c("UWAVE-R", "UWAVE-SD", "MVLUE-R", "MVLUE-SD", "RMSDF"),
+  conf.nsigma = 3,
+  limits = NULL,
+  plot = FALSE,
+  ...
+)
 }
 \arguments{
 \item{x}{Object qcd (Quality Control Data)}
@@ -108,4 +124,3 @@ summary(res.qcs)
 \references{
 Montgomery, D.C. (2000)
 }
-

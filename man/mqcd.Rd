@@ -23,4 +23,3 @@ str(dowel1)
 data.mqcd <- mqcd(dowel1)
 str(data.mqcd)
 }
-

@@ -8,12 +8,26 @@
 \usage{
 npqcs.Q(x, ...)
 
-\method{npqcs.Q}{default}(x, G, data.name = NULL, limits = NULL,
-  method = c("Tukey", "Liu", "Mahalanobis", "RP", "LD"), alpha = 0.01,
-  plot = FALSE, ...)
+\method{npqcs.Q}{default}(
+  x,
+  G,
+  data.name = NULL,
+  limits = NULL,
+  method = c("Tukey", "Liu", "Mahalanobis", "RP", "LD"),
+  alpha = 0.01,
+  plot = FALSE,
+  ...
+)
 
-\method{npqcs.Q}{npqcd}(x, data.name, limits = NULL, method = c("Tukey",
-  "Liu", "Mahalanobis", "RP", "LD"), alpha = 0.01, plot = FALSE, ...)
+\method{npqcs.Q}{npqcd}(
+  x,
+  data.name,
+  limits = NULL,
+  method = c("Tukey", "Liu", "Mahalanobis", "RP", "LD"),
+  alpha = 0.01,
+  plot = FALSE,
+  ...
+)
 }
 \arguments{
 \item{x}{An object npqcd (Non parametric Quality Control Data)}
@@ -68,4 +82,3 @@ plot(res.npqcs,title =" Q Control Chart")}
 \references{
 Regina Liu (1995)
 }
-

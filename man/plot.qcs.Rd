@@ -2,59 +2,155 @@
 % Please edit documentation in R/plot.qcs.R
 \name{plot.qcs}
 \alias{plot.qcs}
-\alias{plot.qcs.R}
+\alias{plot.qcs.xbar}
 \alias{plot.qcs.S}
-\alias{plot.qcs.c}
-\alias{plot.qcs.cusum}
-\alias{plot.qcs.ewma}
-\alias{plot.qcs.np}
+\alias{plot.qcs.R}
 \alias{plot.qcs.one}
 \alias{plot.qcs.p}
+\alias{plot.qcs.np}
+\alias{plot.qcs.c}
 \alias{plot.qcs.u}
-\alias{plot.qcs.xbar}
+\alias{plot.qcs.ewma}
+\alias{plot.qcs.cusum}
 \title{function to create a plotting 'qcs' object}
 \usage{
-\method{plot}{qcs}(x, title, subtitle, xlab, ylab, ylim,
-  center.nominal = NULL, limits.specification = NULL, limits.alert = NULL,
-  type.data = c("continuous", "atributte", "dependence"), ...)
+\method{plot}{qcs}(
+  x,
+  title,
+  subtitle,
+  xlab,
+  ylab,
+  ylim,
+  center.nominal = NULL,
+  limits.specification = NULL,
+  limits.alert = NULL,
+  type.data = c("continuous", "atributte", "dependence"),
+  ...
+)
 
-\method{plot}{qcs.xbar}(x, title = NULL, subtitle = NULL, xlab = NULL,
-  ylab = NULL, ylim = NULL, conf.nsigma.alert = NULL,
-  center.nominal = NULL, limits.specification = NULL, ...)
+\method{plot}{qcs.xbar}(
+  x,
+  title = NULL,
+  subtitle = NULL,
+  xlab = NULL,
+  ylab = NULL,
+  ylim = NULL,
+  conf.nsigma.alert = NULL,
+  center.nominal = NULL,
+  limits.specification = NULL,
+  ...
+)
 
-\method{plot}{qcs.S}(x, title = NULL, subtitle = NULL, xlab = NULL,
-  ylab = NULL, ylim = NULL, conf.nsigma.alert = NULL,
-  center.nominal = NULL, limits.specification = NULL, ...)
+\method{plot}{qcs.S}(
+  x,
+  title = NULL,
+  subtitle = NULL,
+  xlab = NULL,
+  ylab = NULL,
+  ylim = NULL,
+  conf.nsigma.alert = NULL,
+  center.nominal = NULL,
+  limits.specification = NULL,
+  ...
+)
 
-\method{plot}{qcs.R}(x, title = NULL, subtitle = NULL, xlab = NULL,
-  ylab = NULL, ylim = NULL, conf.nsigma.alert = NULL,
-  center.nominal = NULL, limits.specification = NULL, ...)
+\method{plot}{qcs.R}(
+  x,
+  title = NULL,
+  subtitle = NULL,
+  xlab = NULL,
+  ylab = NULL,
+  ylim = NULL,
+  conf.nsigma.alert = NULL,
+  center.nominal = NULL,
+  limits.specification = NULL,
+  ...
+)
 
-\method{plot}{qcs.one}(x, title = NULL, subtitle = NULL, xlab = NULL,
-  ylab = NULL, ylim = NULL, conf.nsigma.alert = NULL,
-  center.nominal = NULL, limits.specification = NULL, ...)
+\method{plot}{qcs.one}(
+  x,
+  title = NULL,
+  subtitle = NULL,
+  xlab = NULL,
+  ylab = NULL,
+  ylim = NULL,
+  conf.nsigma.alert = NULL,
+  center.nominal = NULL,
+  limits.specification = NULL,
+  ...
+)
 
-\method{plot}{qcs.p}(x, title = NULL, subtitle = NULL, xlab = NULL,
-  ylab = NULL, ylim = NULL, conf.nsigma.alert = NULL,
-  center.nominal = NULL, limits.specification = NULL, ...)
+\method{plot}{qcs.p}(
+  x,
+  title = NULL,
+  subtitle = NULL,
+  xlab = NULL,
+  ylab = NULL,
+  ylim = NULL,
+  conf.nsigma.alert = NULL,
+  center.nominal = NULL,
+  limits.specification = NULL,
+  ...
+)
 
-\method{plot}{qcs.np}(x, title = NULL, subtitle = NULL, xlab = NULL,
-  ylab = NULL, ylim = NULL, conf.nsigma.alert = NULL,
-  center.nominal = NULL, limits.specification = NULL, ...)
+\method{plot}{qcs.np}(
+  x,
+  title = NULL,
+  subtitle = NULL,
+  xlab = NULL,
+  ylab = NULL,
+  ylim = NULL,
+  conf.nsigma.alert = NULL,
+  center.nominal = NULL,
+  limits.specification = NULL,
+  ...
+)
 
-\method{plot}{qcs.c}(x, title = NULL, subtitle = NULL, xlab = NULL,
-  ylab = NULL, ylim = NULL, conf.nsigma.alert = NULL,
-  center.nominal = NULL, limits.specification = NULL, ...)
+\method{plot}{qcs.c}(
+  x,
+  title = NULL,
+  subtitle = NULL,
+  xlab = NULL,
+  ylab = NULL,
+  ylim = NULL,
+  conf.nsigma.alert = NULL,
+  center.nominal = NULL,
+  limits.specification = NULL,
+  ...
+)
 
-\method{plot}{qcs.u}(x, title = NULL, subtitle = NULL, xlab = NULL,
-  ylab = NULL, ylim = NULL, conf.nsigma.alert = NULL,
-  center.nominal = NULL, limits.specification = NULL, ...)
+\method{plot}{qcs.u}(
+  x,
+  title = NULL,
+  subtitle = NULL,
+  xlab = NULL,
+  ylab = NULL,
+  ylim = NULL,
+  conf.nsigma.alert = NULL,
+  center.nominal = NULL,
+  limits.specification = NULL,
+  ...
+)
 
-\method{plot}{qcs.ewma}(x, title = NULL, subtitle = NULL, xlab = NULL,
-  ylab = NULL, ylim = NULL, ...)
+\method{plot}{qcs.ewma}(
+  x,
+  title = NULL,
+  subtitle = NULL,
+  xlab = NULL,
+  ylab = NULL,
+  ylim = NULL,
+  ...
+)
 
-\method{plot}{qcs.cusum}(x, title = NULL, subtitle = NULL, xlab = NULL,
-  ylab = NULL, ylim = NULL, ...)
+\method{plot}{qcs.cusum}(
+  x,
+  title = NULL,
+  subtitle = NULL,
+  xlab = NULL,
+  ylab = NULL,
+  ylim = NULL,
+  ...
+)
 }
 \arguments{
 \item{x}{Object qcs (Quality Control Statical)}
@@ -95,4 +191,3 @@ number of standard deviations (if \code{conf.nsigma} > 1) or the confidence leve
 Generic function for plotting Shewhart charts of object of class 'qcs' to perform statistical 
 quality control.
 }
-

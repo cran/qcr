@@ -4,13 +4,15 @@
 \name{orangejuice}
 \alias{orangejuice}
 \title{Orange juice data}
-\format{A data frame with 54 observations on the following 4 variables:
+\format{
+A data frame with 54 observations on the following 4 variables:
 \describe{ 
 \item{sample}{sample id}
 \item{D}{number of defectives}
 \item{size}{sample sizes} 
 \item{trial}{trial samples (TRUE/FALSE)}
- }}
+ }
+}
 \description{
 Frozen orange juice concentrate is packed in 6-oz cardboard cans. These
 cans are formed on a machine by spinning them from cardboard stock and
@@ -40,4 +42,3 @@ Montgomery, D.C. (1991) \emph{Introduction to Statistical
 Quality Control}, 2nd ed, New York, John Wiley & Sons, pp. 152--155.
 }
 \keyword{datasets}
-

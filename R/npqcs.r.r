@@ -23,12 +23,6 @@
 ##' @references Regina Liu (1995)
 ##' @examples
 ##' \dontrun{
-##' ##
-##' ##  Continuous data 
-##' ##
-##' ##
-##' ##  Continuous data 
-##' ##
 ##' library(qcr)
 ##' set.seed(356)
 ##' mu<-c(0,0)

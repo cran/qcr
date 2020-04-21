@@ -8,13 +8,31 @@
 \usage{
 qcs.cusum(x, ...)
 
-\method{qcs.cusum}{default}(x, var.index = 1, sample.index = 2,
-  covar.index = NULL, covar.names = NULL, data.name = NULL,
-  sizes = NULL, center = NULL, std.dev = NULL, decision.interval = 5,
-  se.shift = 1, plot = FALSE, ...)
+\method{qcs.cusum}{default}(
+  x,
+  var.index = 1,
+  sample.index = 2,
+  covar.index = NULL,
+  covar.names = NULL,
+  data.name = NULL,
+  sizes = NULL,
+  center = NULL,
+  std.dev = NULL,
+  decision.interval = 5,
+  se.shift = 1,
+  plot = FALSE,
+  ...
+)
 
-\method{qcs.cusum}{qcd}(x, center = NULL, std.dev = NULL,
-  decision.interval = 5, se.shift = 1, plot = FALSE, ...)
+\method{qcs.cusum}{qcd}(
+  x,
+  center = NULL,
+  std.dev = NULL,
+  decision.interval = 5,
+  se.shift = 1,
+  plot = FALSE,
+  ...
+)
 }
 \arguments{
 \item{x}{Object qcd (Quality Control Data)}
@@ -72,4 +90,3 @@ summary(res.qcs)
 plot(res.qcs)
 
 }
-

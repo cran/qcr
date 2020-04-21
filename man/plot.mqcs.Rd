@@ -2,21 +2,42 @@
 % Please edit documentation in R/plot.mqcs.R
 \name{plot.mqcs}
 \alias{plot.mqcs}
+\alias{plot.mqcs.t2}
 \alias{plot.mqcs.mcusum}
 \alias{plot.mqcs.mewma}
-\alias{plot.mqcs.t2}
 \title{Plot method for 'mqcs' objects}
 \usage{
 \method{plot}{mqcs}(x, title, subtitle, xlab, ylab, ylim, ...)
 
-\method{plot}{mqcs.t2}(x, title = NULL, subtitle = NULL, xlab = NULL,
-  ylab = NULL, ylim = NULL, ...)
+\method{plot}{mqcs.t2}(
+  x,
+  title = NULL,
+  subtitle = NULL,
+  xlab = NULL,
+  ylab = NULL,
+  ylim = NULL,
+  ...
+)
 
-\method{plot}{mqcs.mcusum}(x, title = NULL, subtitle = NULL, xlab = NULL,
-  ylab = NULL, ylim = NULL, ...)
+\method{plot}{mqcs.mcusum}(
+  x,
+  title = NULL,
+  subtitle = NULL,
+  xlab = NULL,
+  ylab = NULL,
+  ylim = NULL,
+  ...
+)
 
-\method{plot}{mqcs.mewma}(x, title = NULL, subtitle = NULL, xlab = NULL,
-  ylab = NULL, ylim = NULL, ...)
+\method{plot}{mqcs.mewma}(
+  x,
+  title = NULL,
+  subtitle = NULL,
+  xlab = NULL,
+  ylab = NULL,
+  ylim = NULL,
+  ...
+)
 }
 \arguments{
 \item{x}{Object mqcs (Multivarite Quality Control Statical)}
@@ -37,4 +58,3 @@
 Generic function for plotting Multivarite charts of object of class 'mqcs' to perform statistical 
 quality control.
 }
-

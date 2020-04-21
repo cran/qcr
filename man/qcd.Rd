@@ -4,9 +4,16 @@
 \alias{qcd}
 \title{Quality Control Data}
 \usage{
-qcd(data, var.index = 1, sample.index = 2, covar.index = NULL,
-  covar.names = NULL, data.name = NULL, type.data = c("continuous",
-  "atributte", "dependence"), sizes = NULL)
+qcd(
+  data,
+  var.index = 1,
+  sample.index = 2,
+  covar.index = NULL,
+  covar.names = NULL,
+  data.name = NULL,
+  type.data = c("continuous", "atributte", "dependence"),
+  sizes = NULL
+)
 }
 \arguments{
 \item{data}{a matrix or data-frame which should contain data, index sample and,
@@ -40,4 +47,3 @@ Create an object of class 'qcd' to perform statistical quality control.
 This object may then be used to plot Shewhart charts, Multivariate Control Charts,
 and more.
 }
-

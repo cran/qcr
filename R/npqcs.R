@@ -156,7 +156,7 @@ npqcs.add.default <- function(x, value, ...){
   type <- x$type
   G <- x$npqcd$G
   
-  if (class(value) == "matrix" || class(value) == "data.frame") {
+  if (inherits(value, "matrix") || inherits(value, "data.frame")) {
     p <- ncol(value) # quality characteristics
     m <- nrow(value) # number of samples or observations
     names <- colnames(value)    
@@ -226,7 +226,8 @@ npqcs.add.default <- function(x, value, ...){
 ##' new.npqcd <- npstate.control(x = res.npqcs)
 ##' res.npqcs <- npqcs.r(new.npqcd)
 ##' summary(res.npqcs)
-##' plot(res.npqcs)  ]
+##' plot(res.npqcs)  
+##' }
 
 
 

@@ -8,13 +8,32 @@
 \usage{
 mqcs.t2(x, ...)
 
-\method{mqcs.t2}{default}(x, data.name = NULL, limits = NULL, Xmv = NULL,
-  S = NULL, colm = NULL, alpha = 0.01, phase = 1, method = "sw",
-  plot = FALSE, ...)
+\method{mqcs.t2}{default}(
+  x,
+  data.name = NULL,
+  limits = NULL,
+  Xmv = NULL,
+  S = NULL,
+  colm = NULL,
+  alpha = 0.01,
+  phase = 1,
+  method = "sw",
+  plot = FALSE,
+  ...
+)
 
-\method{mqcs.t2}{mqcd}(x, limits = NULL, Xmv = NULL, S = NULL,
-  colm = NULL, alpha = 0.01, phase = 1, method = "sw", plot = FALSE,
-  ...)
+\method{mqcs.t2}{mqcd}(
+  x,
+  limits = NULL,
+  Xmv = NULL,
+  S = NULL,
+  colm = NULL,
+  alpha = 0.01,
+  phase = 1,
+  method = "sw",
+  plot = FALSE,
+  ...
+)
 }
 \arguments{
 \item{x}{an R object (used to select the method). See details.}
@@ -69,4 +88,3 @@ plot(res.mqcs, title =" Hotelling Control Chart for archery1")
 \author{
 Edgar Santos-Fernandez
 }
-

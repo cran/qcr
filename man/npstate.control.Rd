@@ -15,4 +15,30 @@ npstate.control(x, control = FALSE)
 This function removes observations from the sample which violates 
 the rules of a process under control
 }
-
+\examples{
+\dontrun{
+##
+##  Continuous data 
+##
+library(qcr)
+set.seed(356)
+mu<-c(0,0)
+Sigma<- matrix(c(1,0,0,1),nrow = 2,ncol = 2)
+mu <- c(2,2)
+S <- matrix(c(4,0,0,4),nrow = 2,ncol = 2)
+G <- rmvnorm(540, mean = mu, sigma = Sigma)
+x<- rmvnorm(40,mean=mu,sigma = S)
+x <- rbind(G[501:540,],x)
+M <- G[1:500,]
+data.npqcd <- npqcd(x,M)
+str(data.npqcd)
+res.npqcs <- npqcs.r(data.npqcd,method = "Liu", alpha=0.025)
+str(res.npqcs)
+summary(res.npqcs)
+plot(res.npqcs)
+new.npqcd <- npstate.control(x = res.npqcs)
+res.npqcs <- npqcs.r(new.npqcd)
+summary(res.npqcs)
+plot(res.npqcs)  
+}
+}

@@ -4,9 +4,19 @@
 \alias{qcs.cp}
 \title{Process capability indices (parametric)}
 \usage{
-qcs.cp(object, parameters = c(u = 0, v = 0), limits = c(lsl = -3, usl = 3),
-  target = NULL, mu = 0, std.dev = 1, nsigmas = 3, k = 1,
-  contour = TRUE, ylim = NULL, ...)
+qcs.cp(
+  object,
+  parameters = c(u = 0, v = 0),
+  limits = c(lsl = -3, usl = 3),
+  target = NULL,
+  mu = 0,
+  std.dev = 1,
+  nsigmas = 3,
+  k = 1,
+  contour = TRUE,
+  ylim = NULL,
+  ...
+)
 }
 \arguments{
 \item{object}{qcs object of type \code{"qcs.xbar"} or \code{"qcs.one"}.}
@@ -57,4 +67,3 @@ Montgomery, D.C. (1991) \emph{Introduction to Statistical Quality Control}, 2nd
 ed, New York, John Wiley & Sons. \cr
 Vannman, K (1995) \emph{A Unified Approach to Capability Indices}. Statitica Sinica,5,805-820.\cr
 }
-

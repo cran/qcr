@@ -8,13 +8,22 @@
 \usage{
 qcs.np(x, ...)
 
-\method{qcs.np}{default}(x, var.index = 1, sample.index = 2,
-  covar.index = NULL, covar.names = NULL, data.name = NULL,
-  sizes = NULL, center = NULL, conf.nsigma = 3, limits = NULL,
-  plot = FALSE, ...)
+\method{qcs.np}{default}(
+  x,
+  var.index = 1,
+  sample.index = 2,
+  covar.index = NULL,
+  covar.names = NULL,
+  data.name = NULL,
+  sizes = NULL,
+  center = NULL,
+  conf.nsigma = 3,
+  limits = NULL,
+  plot = FALSE,
+  ...
+)
 
-\method{qcs.np}{qcd}(x, center = NULL, conf.nsigma = 3, limits = NULL,
-  plot = FALSE, ...)
+\method{qcs.np}{qcd}(x, center = NULL, conf.nsigma = 3, limits = NULL, plot = FALSE, ...)
 }
 \arguments{
 \item{x}{an R object (used to select the method). See details.}
@@ -72,4 +81,3 @@ plot(res.qcs)
 datos.qcs <- qcs.np(orangejuice[trial,c(1,2)], sizes = orangejuice[trial,3])
 plot(datos.qcs)
 }
-

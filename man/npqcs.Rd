@@ -2,8 +2,8 @@
 % Please edit documentation in R/npqcs.R
 \name{npqcs}
 \alias{npqcs}
-\alias{print.npqcs}
 \alias{summary.npqcs}
+\alias{print.npqcs}
 \title{Statistical Quality Control Object}
 \usage{
 npqcs(x, method = c("Tukey", "Liu", "Mahalanobis", "RP", "LD"), ...)
@@ -21,4 +21,3 @@ Create an object of class 'npqcs' to perform statistical quality control.
 This function is used to compute statistics required to plot 
 Non Parametric Multivariate Control Charts
 }
-

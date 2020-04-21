@@ -8,13 +8,22 @@
 \usage{
 qcs.c(x, ...)
 
-\method{qcs.c}{default}(x, var.index = 1, sample.index = 2,
-  covar.index = NULL, covar.names = NULL, data.name = NULL,
-  sizes = NULL, center = NULL, conf.nsigma = 3, limits = NULL,
-  plot = FALSE, ...)
+\method{qcs.c}{default}(
+  x,
+  var.index = 1,
+  sample.index = 2,
+  covar.index = NULL,
+  covar.names = NULL,
+  data.name = NULL,
+  sizes = NULL,
+  center = NULL,
+  conf.nsigma = 3,
+  limits = NULL,
+  plot = FALSE,
+  ...
+)
 
-\method{qcs.c}{qcd}(x, center = NULL, conf.nsigma = 3, limits = NULL,
-  plot = FALSE, ...)
+\method{qcs.c}{qcd}(x, center = NULL, conf.nsigma = 3, limits = NULL, plot = FALSE, ...)
 }
 \arguments{
 \item{x}{an object qcd (Quality Control Data)}
@@ -73,4 +82,3 @@ summary(res.qcs)
 plot(res.qcs)
 
 }
-

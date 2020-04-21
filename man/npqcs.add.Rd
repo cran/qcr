@@ -19,4 +19,3 @@ npqcs.add(x, ...)
 \description{
 This function is used to join two objects of type matrix, data.frame or array and npqcs.
 }
-

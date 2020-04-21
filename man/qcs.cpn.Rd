@@ -4,9 +4,16 @@
 \alias{qcs.cpn}
 \title{##' Process capability indices (Nonparametric)}
 \usage{
-qcs.cpn(object, parameters = c(u = 0, v = 0), limits = c(lsl = -3, usl = 3),
-  q = c(lq = -3, uq = 3), target = NULL, median = 0, nsigmas = 3,
-  confidence = 0.9973)
+qcs.cpn(
+  object,
+  parameters = c(u = 0, v = 0),
+  limits = c(lsl = -3, usl = 3),
+  q = c(lq = -3, uq = 3),
+  target = NULL,
+  median = 0,
+  nsigmas = 3,
+  confidence = 0.9973
+)
 }
 \arguments{
 \item{object}{qcs object of type \code{"qcs.xbar"} or \code{"qcs.one"}.}
@@ -55,4 +62,3 @@ Tong, L.I. and Chen, J.P. (1998), \emph{Lower con???dence limits of process capa
 indices for nonnormal process distributions.} International Journal of Quality & Reliability Management, 
 Vol. 15 No. 8/9, pp. 907-19.\cr
 }
-

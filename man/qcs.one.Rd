@@ -8,13 +8,33 @@
 \usage{
 qcs.one(x, ...)
 
-\method{qcs.one}{default}(x, var.index = 1, sample.index = 2,
-  covar.index = NULL, covar.names = NULL, data.name = NULL,
-  sizes = NULL, center = NULL, std.dev = c("MR", "SD"), k = 2,
-  conf.nsigma = 3, limits = NULL, plot = FALSE, ...)
+\method{qcs.one}{default}(
+  x,
+  var.index = 1,
+  sample.index = 2,
+  covar.index = NULL,
+  covar.names = NULL,
+  data.name = NULL,
+  sizes = NULL,
+  center = NULL,
+  std.dev = c("MR", "SD"),
+  k = 2,
+  conf.nsigma = 3,
+  limits = NULL,
+  plot = FALSE,
+  ...
+)
 
-\method{qcs.one}{qcd}(x, center = NULL, std.dev = c("MR", "SD"), k = 2,
-  conf.nsigma = 3, limits = NULL, plot = FALSE, ...)
+\method{qcs.one}{qcd}(
+  x,
+  center = NULL,
+  std.dev = c("MR", "SD"),
+  k = 2,
+  conf.nsigma = 3,
+  limits = NULL,
+  plot = FALSE,
+  ...
+)
 }
 \arguments{
 \item{x}{Object qcd (Quality Control Data)}
@@ -84,4 +104,3 @@ summary(res.qcs)
  plot(res.qcs, title = "Control Chart Xbar.one for pistonrings")  
 
 }
-

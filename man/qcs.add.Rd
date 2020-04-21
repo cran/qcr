@@ -7,8 +7,14 @@
 \usage{
 qcs.add(x, ...)
 
-\method{qcs.add}{default}(x, value, var.index = NULL, sample.index = NULL,
-  covar.index = NULL, ...)
+\method{qcs.add}{default}(
+  x,
+  value,
+  var.index = NULL,
+  sample.index = NULL,
+  covar.index = NULL,
+  ...
+)
 }
 \arguments{
 \item{x}{Object type qcs}
@@ -31,4 +37,3 @@ the names of the covariates.}
 \description{
 This function is used to join two objects of type data.frame and qcs.
 }
-

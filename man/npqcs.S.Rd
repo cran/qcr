@@ -8,13 +8,28 @@
 \usage{
 npqcs.S(x, ...)
 
-\method{npqcs.S}{default}(x, G, data.name = NULL, limits = NULL,
-  method = c("Tukey", "Liu", "Mahalanobis", "RP", "LD"), alpha = 0.01,
-  plot = FALSE, standardize = FALSE, ...)
+\method{npqcs.S}{default}(
+  x,
+  G,
+  data.name = NULL,
+  limits = NULL,
+  method = c("Tukey", "Liu", "Mahalanobis", "RP", "LD"),
+  alpha = 0.01,
+  plot = FALSE,
+  standardize = FALSE,
+  ...
+)
 
-\method{npqcs.S}{npqcd}(x, data.name, limits = NULL, method = c("Tukey",
-  "Liu", "Mahalanobis", "RP", "LD"), alpha = 0.01, plot = FALSE,
-  standardize = F, ...)
+\method{npqcs.S}{npqcd}(
+  x,
+  data.name,
+  limits = NULL,
+  method = c("Tukey", "Liu", "Mahalanobis", "RP", "LD"),
+  alpha = 0.01,
+  plot = FALSE,
+  standardize = F,
+  ...
+)
 }
 \arguments{
 \item{x}{An object npqcd (Non parametric Quality Control Data)}
@@ -62,4 +77,3 @@ plot(res.npqcs,title =" S Control Chart")}
 \references{
 Regina Liu (1995)
 }
-
