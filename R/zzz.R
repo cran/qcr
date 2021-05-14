@@ -7,5 +7,5 @@
     packageStartupMessage( 
       paste("\n Package qcr:", pkg.info["Title"], "\n"),
       paste(" version ", pkg.info["Version"], " (built on ", pkg.info["Date"], ").\n", sep=""),
-      " Copyright Miguel A. Flores Sanchez 2016-2020. \n")
+      " Copyright Miguel A. Flores Sanchez 2016-2021. \n")
 }

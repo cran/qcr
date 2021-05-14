@@ -1,8 +1,9 @@
-d2150553c6e4a84a8551052b7dfa015e *DESCRIPTION
-2dd3201eb96a7e8159175353e2dea50e *NAMESPACE
+543848cd25130867ec673565c095a5bc *DESCRIPTION
+56aa41419b2e58e22ae055e1c1284671 *NAMESPACE
 78e44e7537ce777a4b4a0bc11f30914d *R/fdqcd.R
 697730c773fce94f56d2c3c0ad64ffe4 *R/fdqcs.depth.r
 6da78b67b144361e1dd0add43ac3661c *R/fdqcs.rank.r
+2b33d39c3c254f8e2d937dbafa2d29e0 *R/internals.r
 ef6255a341ffc594b8e5f94aff1bc170 *R/mqcd.R
 436cec65a694fc81350f0021336e2155 *R/mqcs.R
 9f661d10ccb36a3c02f26b19480d2aab *R/mqcs.mcusum.r
@@ -19,7 +20,7 @@ bbc607d3ee484fecb09f26ae0b04123d *R/mqcs.t2.r
 265f7048f726ee800963d546ca7961da *R/plot.npqcs.R
 b54674e7c39c7c213ad593af139775ae *R/plot.qcs.R
 4dd3e7827b8b4b270099a54043023dae *R/qcd.r
-e06895708000cbb2563687ab93e09d94 *R/qcr.R
+1dd29346e324ee24e89211a4181d60e5 *R/qcr.R
 476d7c1b4df7a07e9e441ce7abeeb77f *R/qcs.R.r
 40d33510992df6253805ab9e99da1901 *R/qcs.S.r
 9a73261c456d8bc4865330118d44d351 *R/qcs.c.r
@@ -36,8 +37,9 @@ b797572ce9c993698392cb7fc4e0d580 *R/qcs.pcr.r
 14a950d215330ac7d018eb537a85249b *R/qcs.r
 185f7dcbd6915fb3f3c28cf6e88525f3 *R/qcs.u.r
 538594ad06ad3f0f85cfbd28179e3a2b *R/qcs.xbar.r
+1a4ad60f7cee8c86a42a585dc6e20dac *R/qqPlot.R
 16d128eb890f1c3639e349f744294a54 *R/qt.r
-11de33b1cd7dace17562cd7e4630781b *R/zzz.R
+8c93a6c7b8439e52ac746a3006710bdb *R/zzz.R
 508e5dfaa08727f6e147327dc46f7786 *data/archery1.RData
 4388b69ad8198cbd047e4ca6addfbc79 *data/circuit.RData
 27008290452cde4c185ff86ddccf2230 *data/counters.RData

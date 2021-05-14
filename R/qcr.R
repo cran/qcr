@@ -19,11 +19,13 @@
 ##' @import qcc
 ##' @import fda.usc
 ##' @import mvtnorm
-##' @import qualityTools
 ##' @import MASS 
 ##' @importFrom graphics abline axis box grid hist layout legend lines par points rect text title
 ##' @importFrom utils str
 ##' @importFrom stats complete.cases cov dnorm pnorm qbeta qchisq qf qnorm quantile sd
+##' @importFrom graphics plot.default
+##' @importFrom stats coef lm optim optimize pgamma plnorm ppoints qcauchy qexp qgamma qlnorm qlogis qweibull
+
 NULL
 
 ##' @title Vickers hardness data
