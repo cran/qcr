@@ -20,7 +20,7 @@
 ##' @import fda.usc
 ##' @import mvtnorm
 ##' @import MASS 
-##' @importFrom graphics abline axis box grid hist layout legend lines par points rect text title
+##' @importFrom graphics plot abline axis box grid hist layout legend lines par points rect text title
 ##' @importFrom utils str
 ##' @importFrom stats complete.cases cov dnorm pnorm qbeta qchisq qf qnorm quantile sd
 ##' @importFrom graphics plot.default
